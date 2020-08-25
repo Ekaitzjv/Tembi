@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Relación One To Many / de uno a muchos
+    //un modelo va a poder tener muchas fotos(para que saque las fotos)
+    public function images(){
+        return $this->hasMany('App\Images');
+    }
 }
