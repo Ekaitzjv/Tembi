@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Image;
+//use App\Image;
+
 
 Route::get('/', function () {
 
+/*
     //para sacar todas las imagenes de la db
     $images = Image::all();
     foreach($images as $image){
@@ -37,5 +39,15 @@ Route::get('/', function () {
     }
 
     die();
+    */
     return view('welcome');
 });
+
+//comandos en la consola para poder hacer esto:
+//composer require laravel/ui 
+//php artisan ui vue --auth 
+//npm install && npm run dev
+
+//Login
+Auth::routes();
+Route::get('/', 'HomeController@index')->name('home');
