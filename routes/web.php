@@ -51,3 +51,5 @@ Route::get('/', function () {
 //Login
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/settings', 'UserController@settings')->name('settings');

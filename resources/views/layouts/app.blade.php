@@ -73,7 +73,7 @@
                                     My Profile
                                 </a>
 
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{{ route('settings') }}">
                                     Settings
                                 </a>
 
