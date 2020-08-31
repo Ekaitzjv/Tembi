@@ -4,6 +4,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+        <!--mostrar mensaje de actualización-->
+        @if(session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+
             <div class="card">
                 <div class="card-header">Edit profile</div>
 
