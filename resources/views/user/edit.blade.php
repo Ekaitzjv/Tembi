@@ -19,6 +19,9 @@
                         
                         
                         <div class="form-group row">
+                            @if(Auth::user()->image)
+                                <img src="{{ route('user.image',['filename'=>Auth::user()->image]) }}"/>
+                            @endif
                             <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
 
                             <div class="col-md-6">
