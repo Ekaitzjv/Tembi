@@ -1,5 +1,18 @@
 .avatar{
     display: block;
     margin: auto;
-    width: 55px;
+    width: 35;
+}
+
+.container-avatar{
+    display: block;
+    margin: auto;
+    width: 38px;
+    height: 38px;
+    border-radius: 900px;
+    overflow: hidden;
+}
+
+.container-avatar img{
+    height: 100%;
 }

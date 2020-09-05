@@ -19,9 +19,7 @@
                         @csrf
                         
                         <div class="form-group row">
-                            @if(Auth::user()->image)
-                            <img src="{{ route('user.image',['filename'=>Auth::user()->image]) }}" class="avatar" />
-                            @endif
+                            @include('includes.avatar')
                         </div>
 
                         <div class="form-group row">

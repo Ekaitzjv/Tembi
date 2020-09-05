@@ -7,8 +7,13 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
-class UserController extends Controller
-{
+class UserController extends Controller{
+
+    //SOLO VAN A PODER ACCEDER LOS USUARIOS LOGUEADOS (auth)
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function edit(){
         return view('user.edit');
     }
