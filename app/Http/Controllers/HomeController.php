@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Image;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //sacar todas las imagenes
+        $images = Image::orderBy('id', 'desc')->get();
+        return view('home', [
+            'images' => $images
+            ]);
     }
 }

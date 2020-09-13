@@ -2,6 +2,8 @@
     display: block;
     margin: auto;
     width: 35;
+    border-radius: 900px;
+
 }
 
 .container-avatar{
@@ -9,10 +11,20 @@
     margin: auto;
     width: 38px;
     height: 38px;
-    border-radius: 900px;
     overflow: hidden;
 }
 
 .container-avatar img{
     height: 100%;
+}
+
+.pub_image .avatar-main{
+    float: left;
+    margin-right: 20px;
+}
+
+.pub_image .data-user{
+    font-weight: bold;
+    margin-top: 3px;
+    line-height: 35px;
 }
