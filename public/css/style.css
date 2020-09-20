@@ -1,9 +1,9 @@
+/* AVATAR del usuario*/ 
 .avatar{
     display: block;
     margin: auto;
     width: 35;
     border-radius: 900px;
-
 }
 
 .container-avatar{
@@ -18,6 +18,11 @@
     height: 100%;
 }
 
+/* Publicación*/ 
+.pub_image{
+    margin-bottom: 25px;
+}
+
 .pub_image .avatar-main{
     float: left;
     margin-right: 20px;
@@ -27,4 +32,34 @@
     font-weight: bold;
     margin-top: 3px;
     line-height: 35px;
+}
+
+/* Imagen de la publicación*/ 
+.image-container{
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-container img{
+    width: 100%;
+    height: auto;
+}
+
+.pub_image .card-body{
+    padding: 0px;
+}
+
+.pub_image .description-box{
+    padding: 20px;
+}
+
+.pub_image .username{
+    font-weight: bold;
+    float: left;
+}
+
+.pub_image .description{
+    margin-left: 10px;
+    float: left;
 }

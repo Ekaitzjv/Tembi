@@ -23,8 +23,19 @@
                         {{$image->user->username}}
                     </div>
                 </div>
+                <!--Imagen(publicación)-->
                 <div class="card-body">
+                    <div class="image-container">
+                        <img src="{{ route('image.file',['filename' => $image->image_path]) }}" />
+                    </div>
+                    <!--likes-->
+                    <div class="likes">
 
+                    </div>
+                    <!--descripción-->
+                    <div class="description-box">
+                            <span class="username">{{$image->user->username}}</span> <p class="description">{{$image->description}}</p>
+                    </div>
                 </div>
             </div>
             @endforeach
