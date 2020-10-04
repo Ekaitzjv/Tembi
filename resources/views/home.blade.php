@@ -12,7 +12,6 @@
             <div class="card pub_image">
                 <div class="card-header">
                     <!--Imagen avatar-->
-
                     @if($image->user->image)
                     <div class="container-avatar avatar-main">
                         <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
@@ -33,12 +32,19 @@
 
                     </div>
                     <!--descripción-->
+                    @if(!empty($image->description))
                     <div class="description-box">
-                            <span class="username">{{$image->user->username}}</span> <p class="description">{{$image->description}}</p>
+                        <span class="username">{{$image->user->username}}</span>
+                        <p class="description">{{$image->description}}</p>
                     </div>
+                    @endif
                 </div>
             </div>
             @endforeach
+
+            <!--PAGINACIÓN-->
+            <div class="clearfix"></div>
+            {{$images->links()}}
         </div>
     </div>
 </div>
