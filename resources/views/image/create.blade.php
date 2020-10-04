@@ -39,7 +39,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
-                                <input type="submit" class="btn btn-primary" value="Upload new Image"/>
+                                <input type="submit" class="btn btn-primary" value="Upload new Image" />
                             </div>
                         </div>
                     </form>

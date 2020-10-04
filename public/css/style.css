@@ -20,10 +20,14 @@
 
 /* Publicación*/ 
 .pub_image{
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 25px;
+    max-width: 600px;
 }
 
 .pub_image .avatar-main{
+    border-radius: 900px;
     float: left;
     margin-right: 20px;
 }
