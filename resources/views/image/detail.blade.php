@@ -3,12 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <!--mensaje-->
             @include('includes.message')
-
-            <!--Bucle de imagenes principales-->
-            @foreach($images as $image)
             <div class="card pub_image">
                 <div class="card-header">
                     <!--Imagen avatar-->
@@ -18,20 +15,15 @@
                     </div>
                     @endif
                     <div class="data-user">
-                        <!--Nombre de usuario-->
-                        {{$image->user->username}}
+                            <!--Nombre de usuario-->
+                            {{$image->user->username}}
                     </div>
+
                 </div>
                 <!--Imagen(publicación)-->
                 <div class="card-body">
                     <div class="image-container">
                         <img src="{{ route('image.file',['filename' => $image->image_path]) }}" />
-                    </div>
-                    <!--Ver imagen-->
-                    <div class="see-image">
-                        <a href="{{ route('image.detail', ['id' => $image->id])}}">
-                            see image
-                        </a>
                     </div>
                     <!--likes-->
                     <div class="likes">
@@ -52,11 +44,6 @@
                     @endif
                 </div>
             </div>
-            @endforeach
-
-            <!--PAGINACIÓN-->
-            <div class="clearfix"></div>
-            {{$images->links()}}
         </div>
     </div>
 </div>

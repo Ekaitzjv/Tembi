@@ -52,8 +52,18 @@ class ImageController extends Controller
         ]);
     }
 
+    //Coger las imagenes para mostrarlas
     public function getImage($filename){
         $file = Storage::disk('images')->get($filename);
         return new Response($file, 200);
+    }
+
+    //Mostrar página individual de la imagen
+    public function detail($id){
+        $image = Image::find($id);
+
+        return view('image.detail',[
+            'image' => $image
+        ]);
     }
 }
