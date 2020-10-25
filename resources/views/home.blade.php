@@ -34,7 +34,7 @@
                     <!--comments-->
                     <div class="comments">
                         <a href="" class="btn btn-warning btn-comments">
-                            Comment
+                            Comments @if(count($image->comments) != 0)({{count($image->comments)}}) @endif
                         </a>
                     </div>
                     <!--descripción-->
