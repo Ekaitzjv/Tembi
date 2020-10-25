@@ -29,7 +29,13 @@
                     </div>
                     <!--likes-->
                     <div class="likes">
-
+                        <img src="{{asset('img/like_empty.png')}}" />
+                    </div>
+                    <!--comments-->
+                    <div class="comments">
+                        <a href="" class="btn btn-warning btn-comments">
+                            Comment
+                        </a>
                     </div>
                     <!--descripción-->
                     @if(!empty($image->description))

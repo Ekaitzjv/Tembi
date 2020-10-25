@@ -55,15 +55,36 @@
 }
 
 .pub_image .description-box{
-    padding: 20px;
+    padding: 15px;
+    padding-top: 0px;
+    margin-bottom: 0px;
 }
 
 .pub_image .username{
     font-weight: bold;
     float: left;
+    padding: 5px;
 }
 
 .pub_image .description{
-    margin-left: 10px;
+    padding: 5px;
+    margin-bottom: 0px;
+}
+
+/*Botones inferiores de la publicación*/
+.btn-comments{
+    margin: 5px;
+    margin-bottom: 10px;
+}
+
+.likes{
+    padding: 20px;
+    padding-bottom: 0px;
+    padding-top: 10px;
+    padding-right: 5px;
     float: left;
+}
+
+.likes img{
+    width: 25px;
 }
