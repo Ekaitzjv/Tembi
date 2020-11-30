@@ -15,8 +15,8 @@
                     </div>
                     @endif
                     <div class="data-user">
-                            <!--Nombre de usuario-->
-                            {{$image->user->username}}
+                        <!--Nombre de usuario-->
+                        {{$image->user->username}}
                     </div>
 
                 </div>
@@ -31,8 +31,11 @@
                     </div>
                     <!--comments-->
                     <div class="comments">
-                        <a href="" class="btn btn-warning btn-comments">
-                            Comments @if(count($image->comments) != 0)({{count($image->comments)}}) @endif
+                        <a href="" class="btn-comments">
+                            <img src="{{asset('img/comments.png')}}" />
+                                @if(count($image->comments) != 0)
+                                ({{count($image->comments)}})
+                                @endif
                         </a>
                     </div>
                     <!--descripción-->
