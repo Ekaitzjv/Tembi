@@ -55,8 +55,8 @@
 }
 
 .pub_image .description-box{
-    padding: 15px;
-    padding-top: 0px;
+    padding: 10px;
+    padding-top: 5px;
     margin-bottom: 0px;
 }
 
@@ -100,4 +100,17 @@
 
 .likes img{
     width: 25px;
+}
+
+.created_at-main{
+    float: right;
+    color: rgb(100, 100, 100);
+    margin-right: 10px; 
+    padding-top: 10px;
+}
+
+.created_at-ver{
+    float: right;
+    color: rgb(100, 100, 100);
+    padding: 5px;
 }

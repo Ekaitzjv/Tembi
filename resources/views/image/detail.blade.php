@@ -25,6 +25,10 @@
                     <div class="image-container">
                         <img src="{{ route('image.file',['filename' => $image->image_path]) }}" />
                     </div>
+                    <!--created at(fecha)-->
+                    <div class="created_at-main">
+                        <span class="nickname">{{\FormatTime::LongTimeFilter($image->created_at)}}</span>
+                    </div>
                     <!--likes-->
                     <div class="likes">
                         <img src="{{asset('img/like_empty.png')}}" />
@@ -33,9 +37,9 @@
                     <div class="comments">
                         <a href="" class="btn-comments">
                             <img src="{{asset('img/comments.png')}}" />
-                                @if(count($image->comments) != 0)
-                                ({{count($image->comments)}})
-                                @endif
+                            @if(count($image->comments) != 0)
+                            ({{count($image->comments)}})
+                            @endif
                         </a>
                     </div>
                     <!--descripción-->
@@ -45,6 +49,7 @@
                         <p class="description">{{$image->description}}</p>
                     </div>
                     @endif
+
                 </div>
             </div>
         </div>

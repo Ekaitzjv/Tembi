@@ -33,6 +33,10 @@
                             <img src="{{asset('img/view.png')}}" />
                         </a>
                     </div>
+                    <!--created at(fecha)-->
+                    <div class="created_at-main">
+                        <p>{{\FormatTime::LongTimeFilter($image->created_at)}}</p>
+                    </div>
                     <!--likes-->
                     <div class="likes">
                         <img src="{{asset('img/like_empty.png')}}" />
