@@ -34,13 +34,17 @@
                         <img src="{{asset('img/like_empty.png')}}" />
                     </div>
                     <!--comments-->
-                    <div class="comments">
-                        <a href="" class="btn-comments">
-                            <img src="{{asset('img/comments.png')}}" />
+                    <div class="comments-detail">
+                        <p>
                             @if(count($image->comments) != 0)
-                            ({{count($image->comments)}})
+                                {{count($image->comments)}}
+                                @if(count($image->comments) == 1)
+                                    comentario
+                                @else
+                                    comentarios
+                                @endif
                             @endif
-                        </a>
+                        </p>
                     </div>
                     <!--descripción-->
                     @if(!empty($image->description))
@@ -49,7 +53,15 @@
                         <p class="description">{{$image->description}}</p>
                     </div>
                     @endif
-
+                    <!--Formulario de comentarios-->
+                    <div class="comments">
+                        <form method="POST" action="">
+                            @csrf 
+                            <button type="submit" class="btn btn-post-comment">Post</button>
+                            <input type="hidden" name="image_id" value="{{$image->id}}"/>
+                            <p><textarea class="form-control" name="content" required></textarea></p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

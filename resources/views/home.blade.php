@@ -28,8 +28,8 @@
                         <img src="{{ route('image.file',['filename' => $image->image_path]) }}" />
                     </div>
                     <!--Ver imagen-->
-                    <div class="see-image">
-                        <a href="{{ route('image.detail', ['id' => $image->id])}}">
+                    <div class="view-image">
+                        <a href="">
                             <img src="{{asset('img/view.png')}}" />
                         </a>
                     </div>
@@ -42,10 +42,10 @@
                         <img src="{{asset('img/like_empty.png')}}" />
                     </div>
                     <!--comments-->
-                    <div class="comments">
-                        <a href="" class="btn-comments">
+                    <div class="comment-btn">
+                        <a href="{{ route('image.detail', ['id' => $image->id])}}">
                             <img src="{{asset('img/comments.png')}}" />
-                            @if(count($image->comments) != 0)
+                            @if(!empty(count($image->comments)))
                             ({{count($image->comments)}})
                             @endif
                         </a>

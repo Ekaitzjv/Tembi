@@ -57,7 +57,6 @@
 .pub_image .description-box{
     padding: 10px;
     padding-top: 5px;
-    margin-bottom: 0px;
 }
 
 .pub_image .username{
@@ -72,22 +71,43 @@
 }
 
 /*Botones inferiores de la publicación*/
-.see-image img{
+.view-image img{
     width: 25px;
     margin-right: 10px; 
     padding-top: 10px;
     float: right;
 }
 
-.comments a{
+.comment-btn a{
     text-decoration: none;
     color: black;
 }
 
-.btn-comments img{
+.comment-btn img{
     width: 25px;
     padding-bottom: 0px;
     padding-top: 10px;
+}
+
+.comments-detail p{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: rgb(100, 100, 100);
+}
+
+.comments textarea{
+    height: 35px;
+    width: 400px;
+    margin: 5px;
+    margin-left: 15px;
+}
+
+.btn-post-comment{
+    margin-right: 45px;
+    float: right;
+    color: rgb(0, 143, 199);
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .likes{
