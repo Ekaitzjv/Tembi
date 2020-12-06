@@ -10,7 +10,7 @@ use App\Image;
 
 class ImageController extends Controller
 {
-    //solo los usuarios logeados
+    //solo los usuarios logueados
     public function __construct(){
         $this->middleware('auth');
     }

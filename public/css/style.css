@@ -95,15 +95,19 @@
     color: rgb(100, 100, 100);
 }
 
+.comments{
+    max-width: 450px;
+}
+
 .comments textarea{
     height: 35px;
-    width: 400px;
+    width: 80%;
     margin: 5px;
     margin-left: 15px;
 }
 
 .btn-post-comment{
-    margin-right: 45px;
+    margin-right: 10px;
     float: right;
     color: rgb(0, 143, 199);
     font-size: 15px;

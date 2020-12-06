@@ -55,11 +55,18 @@
                     @endif
                     <!--Formulario de comentarios-->
                     <div class="comments">
-                        <form method="POST" action="">
+                        <form method="POST" action="{{ route('comment.save') }}">
                             @csrf 
                             <button type="submit" class="btn btn-post-comment">Post</button>
                             <input type="hidden" name="image_id" value="{{$image->id}}"/>
-                            <p><textarea class="form-control" name="content" required></textarea></p>
+                            <p>
+                                <textarea class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}" name="content"></textarea>
+                                @if($errors->has('content'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('content') }}</strong>
+                                </span>
+                                @endif
+                            </p>
                         </form>
                     </div>
                 </div>
