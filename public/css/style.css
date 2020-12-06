@@ -55,7 +55,7 @@
 }
 
 .pub_image .description-box{
-    padding: 10px;
+    padding: 8px;
     padding-top: 5px;
 }
 
@@ -63,6 +63,8 @@
     font-weight: bold;
     float: left;
     padding: 5px;
+    margin-left: 5px;
+    margin-bottom: 0px;
 }
 
 .pub_image .description{
@@ -71,35 +73,35 @@
 }
 
 /*Botones inferiores de la publicación*/
-.view-image img{
+.pub_image .view-image img{
     width: 25px;
     margin-right: 10px; 
     padding-top: 10px;
     float: right;
 }
 
-.comment-btn a{
+.pub_image .comment-btn a{
     text-decoration: none;
     color: black;
 }
 
-.comment-btn img{
+.pub_image .comment-btn img{
     width: 25px;
     padding-bottom: 0px;
     padding-top: 10px;
 }
 
-.comments-detail p{
+.pub_image .comments-detail p{
     margin-top: 10px;
     margin-bottom: 0px;
     color: rgb(100, 100, 100);
 }
 
-.comments{
-    max-width: 450px;
+.pub_image .comments{
+    max-width: 470px;
 }
 
-.comments textarea{
+.pub_image .comments textarea{
     height: 35px;
     width: 80%;
     margin: 5px;
@@ -114,7 +116,7 @@
     font-weight: bold;
 }
 
-.likes{
+.pub_image .likes{
     padding: 15px;
     padding-bottom: 0px;
     padding-top: 10px;
@@ -122,19 +124,19 @@
     float: left;
 }
 
-.likes img{
+.pub_image .likes img{
     width: 25px;
 }
 
-.created_at-main{
+.pub_image .created_at-main{
     float: right;
     color: rgb(100, 100, 100);
     margin-right: 10px; 
     padding-top: 10px;
 }
 
-.created_at-ver{
+.pub_image .created_at-ver{
     float: right;
     color: rgb(100, 100, 100);
-    padding: 5px;
+    padding: 4px;
 }

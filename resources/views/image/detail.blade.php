@@ -39,10 +39,12 @@
                             @if(count($image->comments) != 0)
                                 {{count($image->comments)}}
                                 @if(count($image->comments) == 1)
-                                    comentario
+                                    comment
                                 @else
-                                    comentarios
+                                    comments
                                 @endif
+                            @else
+                            Add a comment...
                             @endif
                         </p>
                     </div>
