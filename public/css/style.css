@@ -59,7 +59,7 @@
     padding-top: 5px;
 }
 
-.pub_image .username{
+.pub_image .description-username{
     font-weight: bold;
     float: left;
     padding: 5px;
@@ -101,7 +101,7 @@
     max-width: 470px;
 }
 
-.pub_image .comments textarea{
+.pub_image .comment-form textarea{
     height: 35px;
     width: 80%;
     margin: 5px;
@@ -114,6 +114,25 @@
     color: rgb(0, 143, 199);
     font-size: 15px;
     font-weight: bold;
+}
+
+.pub_image .comments{ 
+    margin: 12px; 
+} 
+
+.pub_image .username{
+    font-weight: bold; 
+    float: left;
+}
+
+.pub_image .comment{ 
+    margin-left: 10px; 
+}
+
+.pub_image .time-comments{
+    margin-left: 7px;
+    color: rgb(100, 100, 100);
+    font-size: small;
 }
 
 .pub_image .likes{

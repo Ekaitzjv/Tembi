@@ -27,7 +27,7 @@
                     </div>
                     <!--created at(fecha)-->
                     <div class="created_at-main">
-                        <span class="nickname">{{\FormatTime::LongTimeFilter($image->created_at)}}</span>
+                        <span>{{\FormatTime::LongTimeFilter($image->created_at)}}</span>
                     </div>
                     <!--likes-->
                     <div class="likes">
@@ -51,12 +51,12 @@
                     <!--descripción-->
                     @if(!empty($image->description))
                     <div class="description-box">
-                        <span class="username">{{$image->user->username}}</span>
+                        <span class="description-username">{{$image->user->username}}</span>
                         <p class="description">{{$image->description}}</p>
                     </div>
                     @endif
                     <!--Formulario de comentarios-->
-                    <div class="comments">
+                    <div class="comment-form">
                         <form method="POST" action="{{ route('comment.save') }}">
                             @csrf 
                             <button type="submit" class="btn btn-post-comment">Post</button>
@@ -71,6 +71,16 @@
                             </p>
                         </form>
                     </div>
+
+                    @foreach($image->comments as $comment)
+                        @if(!empty($image->comments))
+                            <div class="comments">
+                                <span class="username">{{$comment->user->username}}</span>
+                                <span class="comment">{{$comment->content}}</span>
+                                <span class="time-comments">{{\FormatTime::LongTimeFilter($comment->created_at)}}</span>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>

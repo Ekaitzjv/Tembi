@@ -45,15 +45,15 @@
                     <div class="comment-btn">
                         <a href="{{ route('image.detail', ['id' => $image->id])}}">
                             <img src="{{asset('img/comments.png')}}" />
-                            @if(!empty(count($image->comments)))
-                            ({{count($image->comments)}})
+                            @if(count($image->comments) != 0)
+                                {{count($image->comments)}}
                             @endif
                         </a>
                     </div>
                     <!--descripción-->
                     @if(!empty($image->description))
                     <div class="description-box">
-                        <span class="username">{{$image->user->username}}</span>
+                        <span class="description-username">{{$image->user->username}}</span>
                         <p class="description">{{$image->description}}</p>
                     </div>
                     @endif
