@@ -39,7 +39,7 @@ class User extends Authenticatable
     ];
 
     //Relación One To Many / de uno a muchos
-    //un modelo va a poder tener muchas fotos(para que saque las fotos)
+    //un usuario puede tener muchas imagenes
     public function images(){
         return $this->hasMany('App\Images');
     }
