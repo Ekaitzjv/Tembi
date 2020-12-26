@@ -135,6 +135,11 @@
     font-size: small;
 }
 
+.pub_image .delete-comment{
+    margin-left: 10px;
+    color: rgb(216, 0, 0);
+}
+
 .pub_image .likes{
     padding: 15px;
     padding-bottom: 0px;

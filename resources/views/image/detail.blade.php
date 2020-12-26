@@ -78,6 +78,10 @@
                                 <span class="username">{{$comment->user->username}}</span>
                                 <span class="comment">{{$comment->content}}</span>
                                 <span class="time-comments">{{\FormatTime::LongTimeFilter($comment->created_at)}}</span>
+                                <!--Comprobar que es el usuario del comentario o de la foto-->
+                                @if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
+                                <a href="{{route('comment.delete', ['id' => $comment->id]) }}" class="delete-comment">delete</a>
+                                @endif
                             </div>
                         @endif
                     @endforeach
