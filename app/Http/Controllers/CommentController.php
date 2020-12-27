@@ -50,6 +50,7 @@ class CommentController extends Controller
         $comment = Comment::find($id);
 
         //Comprobar si soy el dueño del comentario o de la publicación
+                                                    //Utilizo la función image del modelo
         if($user && ($comment->user_id == $user->id || $comment->image->user_id == $user->id)){
             $comment->delete();
 
