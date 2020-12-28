@@ -26,6 +26,7 @@
     max-width: 550px;
 }
 
+/*Barra superior publicación*/
 .pub_image .avatar-main{
     border-radius: 900px;
     float: left;
@@ -54,6 +55,99 @@
     padding: 0px;
 }
 
+/*Parte inferior publicación*/
+
+/*Ver imagen*/
+.view-image img{
+    width: 25px;
+    margin-right: 10px; 
+    padding-top: 10px;
+    float: right;
+}
+
+/*Comentarios general*/
+
+.comment-btn a{
+    text-decoration: none;
+    color: black;
+}
+
+.comment-btn img{
+    width: 25px;
+    padding-bottom: 0px;
+    padding-top: 10px;
+}
+
+/*Comentarios fecha*/
+.comments-detail p{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: rgb(100, 100, 100);
+}
+
+/*Formulario postear comentarios*/
+.comment-form textarea{
+    height: 35px;
+    width: 80%;
+    margin: 5px;
+    margin-left: 15px;
+}
+
+.btn-post-comment{
+    margin-right: 10px;
+    float: right;
+    color: rgb(0, 143, 199);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/*Comentarios listados*/
+.comments{
+    max-width: 470px;
+    margin: 12px; 
+}
+
+.username{
+    margin-left: 5px;
+    font-weight: bold; 
+    float: left;
+}
+
+.comment-content{ 
+    margin-left: 10px; 
+}
+
+.time-comments{
+    margin-left: 7px;
+    color: rgb(100, 100, 100);
+    font-size: small;
+}
+
+.delete-comment{
+    margin-left: 10px;
+    color: rgb(216, 0, 0);
+}
+
+/*Likes*/
+.likes{
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    float: left;
+}
+
+.likes img{
+    width: 25px;
+    padding-bottom: 0px;
+    padding-top: 10px;
+}
+
+/*Cantidades likes/comentarios */
+.count_quantity{
+    color: rgb(77, 77, 77);
+}
+
+/*Descripción de la imagen*/
 .pub_image .description-box{
     padding: 8px;
     padding-top: 5px;
@@ -72,95 +166,10 @@
     margin-bottom: 0px;
 }
 
-/*Botones inferiores de la publicación*/
-.pub_image .view-image img{
-    width: 25px;
-    margin-right: 10px; 
-    padding-top: 10px;
-    float: right;
-}
-
-.pub_image .comment-btn a{
-    text-decoration: none;
-    color: black;
-}
-
-.pub_image .comment-btn img{
-    width: 25px;
-    padding-bottom: 0px;
-    padding-top: 10px;
-}
-
-.pub_image .comments-detail p{
-    margin-top: 10px;
-    margin-bottom: 0px;
-    color: rgb(100, 100, 100);
-}
-
-.pub_image .comments{
-    max-width: 470px;
-}
-
-.pub_image .comment-form textarea{
-    height: 35px;
-    width: 80%;
-    margin: 5px;
-    margin-left: 15px;
-}
-
-.btn-post-comment{
-    margin-right: 10px;
-    float: right;
-    color: rgb(0, 143, 199);
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.pub_image .comments{ 
-    margin: 12px; 
-} 
-
-.pub_image .username{
-    font-weight: bold; 
-    float: left;
-}
-
-.pub_image .comment{ 
-    margin-left: 10px; 
-}
-
-.pub_image .time-comments{
-    margin-left: 7px;
-    color: rgb(100, 100, 100);
-    font-size: small;
-}
-
-.pub_image .delete-comment{
-    margin-left: 10px;
-    color: rgb(216, 0, 0);
-}
-
-.pub_image .likes{
-    padding: 15px;
-    padding-bottom: 0px;
-    padding-top: 10px;
-    padding-right: 10px;
-    float: left;
-}
-
-.pub_image .likes img{
-    width: 25px;
-}
-
-.pub_image .created_at-main{
+/*Fecha creación*/
+.created_at-main{
     float: right;
     color: rgb(100, 100, 100);
     margin-right: 10px; 
     padding-top: 10px;
-}
-
-.pub_image .created_at-ver{
-    float: right;
-    color: rgb(100, 100, 100);
-    padding: 4px;
 }
