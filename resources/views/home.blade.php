@@ -22,32 +22,57 @@
                         {{$image->user->username}}
                     </div>
                 </div>
+
                 <!--Imagen(publicación)-->
                 <div class="card-body">
                     <div class="image-container">
                         <img src="{{ route('image.file',['filename' => $image->image_path]) }}" />
                     </div>
+
+                    <!--BOTONES INFERIORES-->
                     <!--Ver imagen-->
                     <div class="view-image">
                         <a href="">
                             <img src="{{asset('img/view.png')}}" />
                         </a>
                     </div>
+
                     <!--created at(fecha)-->
                     <div class="created_at-main">
                         <p>{{\FormatTime::LongTimeFilter($image->created_at)}}</p>
                     </div>
+
                     <!--likes-->
                     <div class="likes">
-                        <img src="{{asset('img/like_empty.png')}}" />
+                        <!--Comprobar si el usuario le dió like a la imagen-->
+                        <?php $user_like = false; ?>
+                        @foreach($image->likes as $like)
+                        @if($like->user->id == Auth::user()->id )
+                        <?php $user_like = true; ?>
+                        @endif
+                        @endforeach
+
+                        @if($user_like)
+                        <img src="{{asset('img/like_red.png')}}" class="like_red" />
+                        @else
+                        <img src="{{asset('img/like_empty.png')}}" class="like-empty" />
+                        @endif
+                        <span class="count_quantity">
+                            @if(count($image->likes) != 0)
+                            {{count($image->likes)}}
+                            @endif
+                        </span>
                     </div>
+
                     <!--comments-->
                     <div class="comment-btn">
                         <a href="{{ route('image.detail', ['id' => $image->id])}}">
                             <img src="{{asset('img/comments.png')}}" />
-                            @if(count($image->comments) != 0)
+                            <span class="count_quantity">
+                                @if(count($image->comments) != 0)
                                 {{count($image->comments)}}
-                            @endif
+                                @endif
+                            </span>
                         </a>
                     </div>
                     <!--descripción-->
