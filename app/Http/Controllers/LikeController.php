@@ -11,7 +11,7 @@ class LikeController extends Controller{
         $this->middleware('auth');
     }
 
-    //Guardar like en DDBB
+    //Guardar un like
     public function like($image_id){
         //Recoger datos del usuario y de la imagen
         $user = \Auth::user();
@@ -42,7 +42,32 @@ class LikeController extends Controller{
         }
     }
 
+    //Borrar un like
     public function dislike($image_id){
+    //Recoger datos del usuario y de la imagen
+    $user = \Auth::user();
 
+    //Condición para ver si ya existe el like, para poder hacer dislike
+                             //user_id es igual a $user->id
+    $like = Like::where('user_id', $user->id)
+                             //image_id es igual a $image_id
+                        ->where('image_id', $image_id)
+                        //
+                        ->first();
+
+    //si exite like, lo borramos
+    if($like){
+        //Eliminar like
+        $like->delete();
+
+        return response()->json([
+            'like' => $like,
+            'message' => 'dislike correctamente'
+        ]);
+    }else{
+        return response()->json([
+            'message' => 'El like no existe'
+        ]);
+    }
     }
 }
