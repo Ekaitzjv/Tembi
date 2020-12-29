@@ -31,9 +31,15 @@
 
                     <!--BOTONES INFERIORES-->
                     <!--Ver imagen-->
+<<<<<<< Updated upstream
                     <div class="view-image">
                         <a href="">
                             <img src="{{asset('img/view.png')}}" />
+=======
+                    <div class="see-image">
+                        <a href="{{ route('image.detail', ['id' => $image->id])}}">
+                            View image
+>>>>>>> Stashed changes
                         </a>
                     </div>
 
@@ -65,6 +71,7 @@
                     </div>
 
                     <!--comments-->
+<<<<<<< Updated upstream
                     <div class="comment-btn">
                         <a href="{{ route('image.detail', ['id' => $image->id])}}">
                             <img src="{{asset('img/comments.png')}}" />
@@ -73,6 +80,11 @@
                                 {{count($image->comments)}}
                                 @endif
                             </span>
+=======
+                    <div class="comments">
+                        <a href="" class="btn btn-comments">
+                            Comments @if(count($image->comments) != 0)({{count($image->comments)}}) @endif
+>>>>>>> Stashed changes
                         </a>
                     </div>
                     <!--descripción-->
