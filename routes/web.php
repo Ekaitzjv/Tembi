@@ -63,6 +63,8 @@ Route::post('/comment/save', 'CommentController@save')->name('comment.save');
 Route::get('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
 Route::get('/like/{image_id}', 'LikeController@like')->name('like.like');
 Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.dislike');
+Route::get('/likes', 'LikeController@index')->name('likes');
+
 
 
 
