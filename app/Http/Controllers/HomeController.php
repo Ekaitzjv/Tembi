@@ -23,8 +23,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
+    
+    public function index(){
         //sacar todas las imagenes
         $images = Image::orderBy('id', 'desc')->paginate(15);
         return view('home', [

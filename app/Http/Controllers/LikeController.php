@@ -11,6 +11,16 @@ class LikeController extends Controller{
         $this->middleware('auth');
     }
 
+    //Listar todas las publicaciones a las que les he dado like
+    public function index(){
+        $user = \Auth::user();
+        $likes = Like::where('user_id', $user->id)->orderBy('id', 'desc')
+                    ->paginate(15);
+        return view('like.index', [
+            'likes' => $likes
+        ]);
+    }
+
     //Guardar un like
     public function like($image_id){
         //Recoger datos del usuario y de la imagen
@@ -55,19 +65,19 @@ class LikeController extends Controller{
                         //
                         ->first();
 
-    //si exite like, lo borramos
-    if($like){
-        //Eliminar like
-        $like->delete();
+        //si exite like, lo borramos
+        if($like){
+            //Eliminar like
+            $like->delete();
 
-        return response()->json([
-            'like' => $like,
-            'message' => 'dislike correctamente'
-        ]);
-    }else{
-        return response()->json([
-            'message' => 'El like no existe'
-        ]);
-    }
+            return response()->json([
+                'like' => $like,
+                'message' => 'dislike correctamente'
+            ]);
+        }else{
+            return response()->json([
+                'message' => 'El like no existe'
+            ]);
+        }
     }
 }
