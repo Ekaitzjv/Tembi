@@ -53,9 +53,9 @@
                         @endforeach
 
                         @if($user_like)
-                        <img src="{{asset('img/like_red.png')}}" class="like_red" />
+                        <img src="{{asset('img/like_red.png')}}" class="btn-like" />
                         @else
-                        <img src="{{asset('img/like_empty.png')}}" class="like-empty" />
+                        <img src="{{asset('img/like_empty.png')}}" class="btn-dislike" />
                         @endif
                         <span class="count_quantity">
                             @if(count($image->likes) != 0)
