@@ -12,7 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/main.js') }}" ></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -54,16 +54,19 @@
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
-                        
+
                         @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">Main</a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('image.create') }}">Upload Image</a>
+                            <a class="nav-link" href="{{ route('likes') }}">Favourites</a>
                         </li>
-                            @include('includes.avatar')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('image.create') }}">Post image</a>
+                        </li>
+
+                        @include('includes.avatar')
                         <li>
                         </li>
                         <li class="nav-item dropdown">
