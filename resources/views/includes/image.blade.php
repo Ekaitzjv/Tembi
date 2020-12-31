@@ -4,12 +4,14 @@
         <!--Imagen avatar-->
         @if($image->user->image)
         <div class="container-avatar avatar-main">
-            <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
+            <a href=" {{$image->user->username}}">
+                <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
+            </a>
         </div>
         @endif
         <div class="data-user">
             <!--Nombre de usuario-->
-            {{$image->user->username}}
+            <a href="{{ route('profile', ['id' => Auth::user()->id])}}"> {{$image->user->username}}</a>
         </div>
     </div>
 
