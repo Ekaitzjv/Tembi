@@ -27,16 +27,21 @@
 }
 
 /*Barra superior publicación*/
-.pub_image .avatar-main{
+.avatar-main{
     border-radius: 900px;
     float: left;
     margin-right: 20px;
 }
 
-.pub_image .data-user{
+.data-user{
     font-weight: bold;
     margin-top: 3px;
     line-height: 35px;
+}
+
+.data-user a{
+    color: black;
+    text-decoration: none;
 }
 
 /* Imagen de la publicación*/ 
