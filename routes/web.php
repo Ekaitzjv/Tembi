@@ -65,6 +65,8 @@ Route::get('/like/{image_id}', 'LikeController@like')->name('like.like');
 Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.dislike');
 Route::get('/likes', 'LikeController@index')->name('likes');
 Route::get('/profile/{id}', 'UserController@profile')->name('profile');
+Route::get('/view/{id}', 'ImageController@view')->name('image.view');
+
 
 
 

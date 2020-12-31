@@ -58,6 +58,15 @@ class ImageController extends Controller
         return new Response($file, 200);
     }
 
+    //Ver imagen
+    public function view($id){
+        $image = Image::find($id);
+
+        return view('image.view',[
+            'image' => $image
+        ]);
+    }
+    
     //Mostrar página individual de la imagen
     public function detail($id){
         $image = Image::find($id);
@@ -66,4 +75,6 @@ class ImageController extends Controller
             'image' => $image
         ]);
     }
+
+
 }

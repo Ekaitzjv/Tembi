@@ -71,6 +71,7 @@ class UserController extends Controller{
         return new Response($file, 200);
     }
 
+    //Perfil del usuario
     public function profile($id){
         $user = User::find($id);
 
@@ -79,4 +80,5 @@ class UserController extends Controller{
             'user' => $user
         ]);
     }
+
 }

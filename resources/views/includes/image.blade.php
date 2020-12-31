@@ -11,7 +11,7 @@
         @endif
         <div class="data-user">
             <!--Nombre de usuario-->
-            <a href="{{ route('profile', ['id' => Auth::user()->id])}}"> {{$image->user->username}}</a>
+            <a href="{{ route('profile', ['id' => Auth::user()->id])}}">{{$image->user->username}}</a>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
         <!--BOTONES INFERIORES-->
         <!--Ver imagen-->
         <div class="view-image">
-            <a href="">
+            <a href="{{ route('image.view', ['id' => $image->id])}}">
                 <img src="{{asset('img/view.png')}}" />
             </a>
         </div>
