@@ -14,7 +14,7 @@
                         <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
                     </div>
                     @endif
-                    <div class="data-user">
+                    <div class="data-username">
                         <!--Nombre de usuario-->
                         {{$image->user->username}}
                     </div>

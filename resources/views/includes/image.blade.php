@@ -9,7 +9,7 @@
             </a>
         </div>
         @endif
-        <div class="data-user">
+        <div class="data-username">
             <!--Nombre de usuario-->
             <a href="{{ route('profile', ['id' => Auth::user()->id])}}">{{$image->user->username}}</a>
         </div>
