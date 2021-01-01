@@ -32,6 +32,7 @@ class UserController extends Controller{
             //si el nombre de usuario coincide con el id entonces solo se hará la comprobación
             'username' => 'required|string|max:255|unique:users,surname,'.$id,
             'email' => 'required|string|max:255|email|unique:users,email,'.$id,
+            'description' => '',
         ]);
         
         //Recoger datos del formulario
@@ -40,12 +41,14 @@ class UserController extends Controller{
         $surname = $request->input('surname');
         $username = $request->input('username');
         $email = $request->input('email');
+        $description = $request->input('description');
         
         //asignar nuevos valores al objeto del usuario
         $user->name = $name;
         $user->surname = $surname;
         $user->username = $username;
         $user->email = $email;
+        $user->description = $description;
 
         //subir la imagen
         $image_path = $request->file('image_path');
