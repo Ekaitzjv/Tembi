@@ -1,17 +1,39 @@
 <!--PUBLICACIÓN-->
 <div class="card pub_image">
     <div class="card-header">
+        <!--3 puntos desplegables-->
+        <div class="nav-item dropdown dots">
+            <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown">
+                <img class="avatar" src="{{ asset('img/dots.png')}}" />
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::user()->id])}}">
+                    My Profile
+                </a>
+
+                <a class="dropdown-item" href="{{ route('edit') }}">
+                    Edit profile
+                </a>
+            </div>
+        </div>
         <!--Imagen avatar-->
         @if($image->user->image)
         <div class="container-avatar avatar-main">
-            <a href=" {{$image->user->username}}">
+            <a href=" {{ route('profile', ['id' => $image->user->id])}}">
                 <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
+            </a>
+        </div>
+        @else
+        <div class="container-avatar avatar-main">
+            <a href=" {{ route('profile', ['id' => $image->user->id])}}">
+                <img class="avatar" src="{{ asset('img/default-avatar.jpg')}}" />
             </a>
         </div>
         @endif
         <div class="data-username">
             <!--Nombre de usuario-->
-            <a href="{{ route('profile', ['id' => Auth::user()->id])}}">{{$image->user->username}}</a>
+            <a href="{{ route('profile', ['id' => $image->user->id])}}">{{$image->user->username}}</a>
         </div>
     </div>
 
