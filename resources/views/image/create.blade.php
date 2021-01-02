@@ -27,7 +27,7 @@
                         <div class="form-group row">
                             <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
                             <div class="col-md-6">
-                                <textarea id="description" name="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" /></textarea>
+                                <textarea id="description" name="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" maxlength="100" /></textarea>
 
                                 @if($errors->has('description'))
                                 <span class="invalid-feedback" role="alert">
