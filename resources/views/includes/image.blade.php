@@ -1,22 +1,22 @@
 <!--PUBLICACIÓN-->
 <div class="card pub_image">
     <div class="card-header">
+        @if(Auth::user() && Auth::user()->id == $image->user->id)
         <!--3 puntos desplegables-->
         <div class="nav-item dropdown dots">
             <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown">
                 <img class="avatar" src="{{ asset('img/dots.png')}}" />
             </a>
-
             <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::user()->id])}}">
-                    My Profile
+                    Update
                 </a>
-
-                <a class="dropdown-item" href="{{ route('edit') }}">
-                    Edit profile
+                <a class="dropdown-item delete-publication" href="{{ route('image.delete', ['id' => $image->id]) }}">
+                    Delete
                 </a>
             </div>
         </div>
+        @endif
         <!--Imagen avatar-->
         @if($image->user->image)
         <div class="container-avatar avatar-main">

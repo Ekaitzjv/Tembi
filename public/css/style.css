@@ -50,6 +50,10 @@
     margin-right: 5px;
 }
 
+.dots .delete-publication{
+    color: rgb(184, 0, 0);
+}
+
 /* Imagen de la publicación*/ 
 .image-container{
     height: auto;
@@ -96,15 +100,20 @@
 }
 
 /*Formulario postear comentarios*/
+.comment-form{
+    padding-top: 5px;
+}
+
 .comment-form textarea{
     height: 35px;
-    width: 80%;
+    width: 75%;
     margin: 5px;
     margin-left: 15px;
 }
 
 .btn-post-comment{
-    margin-right: 10px;
+    height: 35px;
+    width: 25%;
     float: right;
     color: rgb(0, 143, 199);
     font-size: 15px;
@@ -223,17 +232,17 @@
 .data-user-profile .data-user{
     float: left;
     margin-top: 30px;
-    margin-left: 30px;
+    margin-left: 25px;
 }
 
 .data-user-profile .description-profile-box{
-    display: block;
     float: right;
-    width: 400px;
-    height: 125px;
-    padding: 28px;
-    margin-top: 10px;
-    word-wrap: break-word
+    width: 350px;
+    height: auto;
+    word-wrap: break-word;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    padding-left: 15px;
 }
 
 .data-user-profile .data-user .username-profile{
