@@ -7,6 +7,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Image;
+use App\Comment;
+use App\Like;
 
 class ImageController extends Controller
 {
@@ -76,5 +78,41 @@ class ImageController extends Controller
         ]);
     }
 
+    //Eliminar imagen
+    public function delete($id){
+        $user = \Auth::user();
+        //sacar la imagen que necesito por id
+        $image = Image::find($id);
+        //sacar todos los comentarios de la imagen por el id
+        $comments = Comment::where('image_id', $id)->get();
+        //sacar todos los likes de la imagen por el id
+        $likes = Like::where('image_id', $id)->get();
 
+        //Comprobar que soy el dueño de la imagen
+        if($user && $image && $image->user->id == $user->id){
+
+            //Eliminar comentarios
+            if($comments && count($comments) >= 1){
+                foreach($comments as $comment){
+                    $comment->delete();
+                }
+            }
+            //Eliminar likes
+            if($likes && count($likes) >= 1){
+                foreach($likes as $like){
+                    $like->delete();
+                }
+            }
+            //Eliminar ficheros de imagen guardados en el storage y en la ddbb
+            Storage::disk('images')->delete($image->image_path);
+            //Eliminar registro de la imagen
+            $image->delete();
+
+            $message = array('message' => 'Image removed correctly');
+
+        }else{
+            $message = array('message' => 'The image was not removed correctly');
+        }
+        return redirect()->route('home')->with($message);
+    }
 }
