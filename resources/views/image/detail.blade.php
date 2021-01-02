@@ -8,6 +8,22 @@
             @include('includes.message')
             <div class="card pub_image">
                 <div class="card-header">
+                    @if(Auth::user() && Auth::user()->id == $image->user->id)
+                    <!--3 puntos desplegables-->
+                    <div class="nav-item dropdown dots">
+                        <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown">
+                            <img class="avatar" src="{{ asset('img/dots.png')}}" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::user()->id])}}">
+                                Update
+                            </a>
+                            <a class="dropdown-item delete-publication" href="{{ route('image.delete', ['id' => $image->id]) }}">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                    @endif
                     <!--Imagen avatar-->
                     @if($image->user->image)
                     <div class="container-avatar avatar-main">
@@ -45,7 +61,7 @@
                         @endif
                         <span class="count_quantity">
                             @if(count($image->likes) != 0)
-                                {{count($image->likes)}}
+                            {{count($image->likes)}}
                             @endif
                         </span>
                     </div>
@@ -53,12 +69,12 @@
                     <div class="comments-detail">
                         <p>
                             @if(count($image->comments) != 0)
-                                {{count($image->comments)}}
-                                @if(count($image->comments) == 1)
-                                    comment
-                                @else
-                                comments
-                                @endif
+                            {{count($image->comments)}}
+                            @if(count($image->comments) == 1)
+                            comment
+                            @else
+                            comments
+                            @endif
                             @else
                             Add a comment...
                             @endif
