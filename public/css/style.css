@@ -44,6 +44,12 @@
     text-decoration: none;
 }
 
+.dots{
+    float: right;
+    width: 18px;
+    margin-right: 5px;
+}
+
 /* Imagen de la publicación*/ 
 .image-container{
     height: auto;
@@ -193,4 +199,56 @@
     color: rgb(100, 100, 100);
     margin-right: 10px; 
     padding-top: 10px;
+}
+
+/*Perfil del usuario*/
+.data-user-profile{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.data-user-profile .avatar-profile{
+    width: 100px;
+    height: 100px;
+    border-radius: 900px;
+    overflow: hidden;
+    float: left;
+}
+
+.data-user-profile .avatar-profile img{
+    width: 100%;
+    height: 100%;
+}
+
+.data-user-profile .data-user{
+    float: left;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.data-user-profile .description-profile-box{
+    display: block;
+    float: right;
+    width: 400px;
+    height: 125px;
+    padding: 28px;
+    margin-top: 10px;
+    word-wrap: break-word
+}
+
+.data-user-profile .data-user .username-profile{
+    font-size: 30px;
+}
+
+.data-user-profile .data-user .name-surname-profile{
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 16px;
+    width: 200px;
+    height: auto;
+    word-wrap: break-word
+}
+
+.profile-empty{
+    color: rgb(117, 117, 117);
 }
