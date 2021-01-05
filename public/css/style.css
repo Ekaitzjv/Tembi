@@ -261,3 +261,9 @@
 .profile-empty{
     color: rgb(117, 117, 117);
 }
+
+/*Página edit image*/
+.edit-image img{
+    width: 100px;
+    height: auto;
+}
