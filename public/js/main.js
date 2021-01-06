@@ -55,4 +55,9 @@ window.addEventListener("load", function(){
         });
     };
     dislike();
+
+    //Buscador de people
+    $('#browser').submit(function(e){
+        $(this).attr('action',url+'/people/'+$('#browser #search').val());
+    })
 });
