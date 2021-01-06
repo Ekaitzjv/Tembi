@@ -4,17 +4,17 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h3>People</h3>
-            <form method="GET" action="{{ route('user.index') }}"  id="browser">
+            <form method="GET" action="{{ route('user.index') }}" id="browser">
                 <div class="row browser">
                     <div class="form-group col browser">
-                        <input type="text" id="search" class="form-control field-browser"/>
+                        <input type="text" id="search" class="form-control field-browser" />
                     </div>
                     <div class="form-group col">
                         <input type="submit" value="Search" class="btn btn-search" />
                     </div>
                 </div>
             </form>
+            <h3>People</h3>
             <hr>
             <!--Bucle de publicaciones-->
             @foreach($users as $user)

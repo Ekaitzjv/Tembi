@@ -37,6 +37,7 @@
 .add-icon img{
     width: 34px;
     height: auto;
+    margin-right: 5px;
 }
 
 /* Publicación*/ 
@@ -287,6 +288,22 @@
 .edit-image img{
     width: 100px;
     height: auto;
+}
+
+/*Buscador pag people*/
+.browser{
+    float: right;
+}
+
+.btn-search{
+    color: #04c59b;
+    background: #fff;
+    border: 1px solid #13d1a8;
+}
+
+.btn-search:hover{
+    color: #fff;
+    background: #13d1a8;
 }
 
 /*Página people*/
