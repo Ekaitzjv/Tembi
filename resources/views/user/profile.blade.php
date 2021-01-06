@@ -29,14 +29,16 @@
             </div>
 
             @if(count($user->images) == 0)
-                <div class="profile-empty">
-                    <center><h3>No Posts Yet</h3></center>
-                </div>
+            <div class="profile-empty">
+                <center>
+                    <h3>No Posts Yet</h3>
+                </center>
+            </div>
             @else
             <!--Bucle de publicaciones-->
-                @foreach($user->images as $image)
-                    @include('includes.image', ['image'=>$image])
-                @endforeach
+            @foreach($user->images as $image)
+            @include('includes.image', ['image'=>$image])
+            @endforeach
             @endif
 
         </div>
