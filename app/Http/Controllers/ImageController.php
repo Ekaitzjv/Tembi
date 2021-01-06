@@ -159,6 +159,5 @@ class ImageController extends Controller
 
         return redirect()->route('image.detail', ['id' => $image_id])
                         ->with(['message' => 'Image updated correctly']);
-
     }
 }

@@ -267,3 +267,14 @@
     width: 100px;
     height: auto;
 }
+
+/*Página people*/
+.profile-people{
+    color: black;
+    transition: transform .4s; 
+}
+
+.profile-people:hover {
+    background: rgba(202, 202, 202, 0.233);
+    transform: scale(1.1);
+}

@@ -15,6 +15,14 @@ class UserController extends Controller{
         $this->middleware('auth');
     }
 
+    
+    public function index(){
+        $users = User::orderBy('id', 'desc')->paginate(15);
+        return view('user.index', [
+            'users' => $users
+        ]);
+    }
+
     public function edit(){
         return view('user.edit');
     }
@@ -83,5 +91,4 @@ class UserController extends Controller{
             'user' => $user
         ]);
     }
-
 }
