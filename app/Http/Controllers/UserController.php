@@ -16,8 +16,19 @@ class UserController extends Controller{
     }
 
     
-    public function index(){
-        $users = User::orderBy('id', 'desc')->paginate(15);
+    public function index($search = null){
+        //método del buscador
+        if(!empty($search)){
+            $users = User::where('username', 'LIKE', '%'.$search.'%')
+                        ->orWhere('name', 'LIKE', '%'.$search.'%')
+                        ->orWhere('surname', 'LIKE', '%'.$search.'%')
+                        ->orderBy('id', 'desc')
+                        ->paginate(15);
+        }else{
+            //metodo de la página gente
+            $users = User::orderBy('id', 'desc')->paginate(15);
+        }
+        
         return view('user.index', [
             'users' => $users
         ]);
