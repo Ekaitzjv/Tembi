@@ -56,21 +56,29 @@
                         @endif
 
                         @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Main</a>
+                        <li class="nav-item home-icon">
+                            <a class="nav-link" href="{{ route('home') }}">
+                                <img src="{{asset('img/home.png')}}" />
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.index') }}">People</a>
+                        <li class="nav-item people-icon">
+                            <a class="nav-link" href="{{ route('user.index') }}">
+                                <img src="{{asset('img/people.png')}}" />
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('likes') }}">Favourites</a>
+                        <li class="nav-item heart-icon">
+                            <a class="nav-link" href="{{ route('likes') }}">
+                                <img src="{{asset('img/Main-heart.png')}}" />
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('image.create') }}">Post image</a>
+                        <li class="nav-item add-icon">
+                            <a class="nav-link" href="{{ route('image.create') }}">
+                                <img src="{{asset('img/add.png')}}" />
+                            </a>
                         </li>
 
                         @include('includes.avatar')
-                        
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

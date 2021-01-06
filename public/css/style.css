@@ -18,6 +18,27 @@
     height: 100%;
 }
 
+/*Iconos body*/
+.home-icon img{
+    width: 30px;
+    height: auto;
+}
+
+.people-icon img{
+    width: 30px;
+    height: auto;
+}
+
+.heart-icon img{
+    width: 33px;
+    height: auto;
+}
+
+.add-icon img{
+    width: 34px;
+    height: auto;
+}
+
 /* Publicación*/ 
 .pub_image{
     margin-left: auto;
