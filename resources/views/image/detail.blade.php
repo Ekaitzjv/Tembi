@@ -28,12 +28,20 @@
                     <!--Imagen avatar-->
                     @if($image->user->image)
                     <div class="container-avatar avatar-main">
-                        <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
+                        <a href=" {{ route('profile', ['id' => $image->user->id])}}">
+                            <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
+                        </a>
+                    </div>
+                    @else
+                    <div class="container-avatar avatar-main">
+                        <a href=" {{ route('profile', ['id' => $image->user->id])}}">
+                            <img class="avatar" src="{{ asset('img/default-avatar.jpg')}}" />
+                        </a>
                     </div>
                     @endif
                     <div class="data-username">
                         <!--Nombre de usuario-->
-                        {{$image->user->username}}
+                        <a href="{{ route('profile', ['id' => $image->user->id])}}">{{$image->user->username}}</a>
                     </div>
                 </div>
                 <!--Imagen(publicación)-->
