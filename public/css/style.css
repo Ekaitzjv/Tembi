@@ -1,3 +1,9 @@
+/*LOGO*/
+.logo img{
+    height: 65px;
+    float: left;
+}
+
 /* AVATAR del usuario*/ 
 .avatar{
     display: block;
@@ -16,6 +22,11 @@
 
 .container-avatar img{
     height: 100%;
+}
+
+.cerrar-sesion:hover {
+    color: red;
+    background: rgb(255, 223, 223);
 }
 
 /*Iconos body*/

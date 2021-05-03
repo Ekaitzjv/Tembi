@@ -19,19 +19,16 @@
         
         @endif
         <!--Imagen avatar-->
-        @if($image->user->image)
         <div class="container-avatar avatar-main">
             <a href=" {{ route('profile', ['id' => $image->user->id])}}">
+            @if($image->user->image)
                 <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
-            </a>
-        </div>
-        @else
-        <div class="container-avatar avatar-main">
-            <a href=" {{ route('profile', ['id' => $image->user->id])}}">
+            @else
                 <img class="avatar" src="{{ asset('img/default-avatar.jpg')}}" />
+            @endif
             </a>
         </div>
-        @endif
+        
         <div class="data-username">
             <!--Nombre de usuario-->
             <a href="{{ route('profile', ['id' => $image->user->id])}}">{{$image->user->username}}</a>
