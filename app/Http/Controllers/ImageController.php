@@ -28,9 +28,9 @@ class ImageController extends Controller
         //Validación
         $validate = $this->validate($request, [
             'description' => '',
-            'image_path' => 'required|image'
+            'image_path' => 'required|image|max:10240'
         ]);
-        
+
         //recojer los datos
         $image_path = $request->file('image_path');
         $description = $request->input('description');

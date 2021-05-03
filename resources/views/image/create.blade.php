@@ -15,7 +15,6 @@
                             <label for="image_path" class="col-md-4 col-form-label text-md-right">Image</label>
                             <div class="col-md-6">
                                 <input id="image_path" type="file" name="image_path" class="form-control {{ $errors->has('image_path') ? 'is-invalid' : '' }}" required />
-
                                 @if($errors->has('image_path'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('image_path') }}</strong>
