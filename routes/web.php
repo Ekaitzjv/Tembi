@@ -51,6 +51,7 @@ Route::get('/', function () {
 //Generales
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/info', 'InfoController@index')->name('info');
 
 //Usuario
 Route::get('/edit', 'UserController@edit')->name('edit');
@@ -77,6 +78,7 @@ Route::get('/comment/delete/{id}', 'CommentController@delete')->name('comment.de
 Route::get('/like/{image_id}', 'LikeController@like')->name('like.like');
 Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.dislike');
 Route::get('/likes', 'LikeController@index')->name('likes');
+
 
 
 
