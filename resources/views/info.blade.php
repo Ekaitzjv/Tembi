@@ -19,7 +19,7 @@
 <body>
     <div class="content">
         <div class="title m-b-md">
-            Red_Social
+        <a class="dropdown-item" href="{{ route('login') }}">My Profile</a>
         </div>
 
     </div>
