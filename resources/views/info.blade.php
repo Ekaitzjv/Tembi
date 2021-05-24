@@ -17,13 +17,17 @@
 </head>
 
 <body>
-    <div class="content">
-        <div class="title m-b-md">
-        <a class="dropdown-item" href="{{ route('login') }}">My Profile</a>
+    <div class="information-page">
+        <a href="{{ url('/') }}"><img class="info-logo" src="{{ asset('img/tembi-grande.png')}}" /></a>
+        <div class="info-buttons">
+            <a class="login-info" href="{{ route('login') }}">Log In</a>
+            <a class="register-info" href="{{ route('register') }}">Register</a>
         </div>
-
-    </div>
     </div>
 </body>
+
+<footer>
+<p>TEMBI - Ekaitz Jiménez Copyright © {{ date('Y') }} </p>
+</footer>
 
 </html>
