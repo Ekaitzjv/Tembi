@@ -55,7 +55,7 @@
                         <!--comprobar la ruta para saber que boton mostrar-->
                         @if (Request::is('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Log In') }}</a>
                         </li>
                         @else
                         <li class="nav-item">
