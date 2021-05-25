@@ -51,7 +51,7 @@ Route::get('/', function () {
 //Generales
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/info', 'InfoController@index')->name('info');
+Route::get('/main', 'MainController@index')->name('main');
 
 //Usuario
 Route::get('/edit', 'UserController@edit')->name('edit');

@@ -17,17 +17,19 @@
 </head>
 
 <body>
-    <div class="information-page">
-        <a href="{{ url('/') }}"><img class="info-logo" src="{{ asset('img/tembi-grande.png')}}" /></a>
-        <div class="info-buttons">
-            <a class="login-info" href="{{ route('login') }}">Log In</a>
-            <a class="register-info" href="{{ route('register') }}">Register</a>
+    <div class="main-page">
+        <a href="{{ url('/') }}"><img class="main-logo" src="{{ asset('img/tembi-grande.png')}}" /></a>
+        <div class="main-buttons">
+            <a class="login-main" href="{{ route('login') }}">Log In</a>
+            <a class="register-main" href="{{ route('register') }}">Register</a>
         </div>
     </div>
 </body>
 
 <footer>
-<p>TEMBI - Ekaitz Jiménez Copyright © {{ date('Y') }} </p>
+    <div class="main-footer">
+        <a href="">Terms </a><a href=""> Privacy</a> <p>{{ date('Y') }} Copyright © TEMBI - Ekaitz Jiménez</p>
+    </div>
 </footer>
 
 </html>

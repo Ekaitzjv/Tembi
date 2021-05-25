@@ -5,11 +5,7 @@
 }
 
 /*Página INFO*/
-.information-page{
-
-}
-
-.info-logo{
+.main-logo{
     display: block;
     margin-top: 5%;
     margin-left: auto;
@@ -19,24 +15,45 @@
     transition-timing-function: ease-in-out;
 }
 
-.info-logo:hover{
+.main-logo:hover{
     width: 122px;
 }
 
-.info-buttons{
+/*WEB*/
+@media (max-width: 780px) {
+    .main-logo{
+        margin-top: 25%;
+        margin-bottom: 40%;
+        width: 120px;
+    }
+}
+  
+/*MOBILE*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .central-name {
+      font-size: 6vw;
+    }
+  
+    .name {
+      font-size: 5.5vw;
+      text-align: center;
+    }
+}
+
+.main-buttons{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 5%;
 }
 
-.info-buttons a{
+.main-buttons a{
     text-decoration: none;
     margin: 10px;
     font-size: 16px;
 }
 
-.login-info{
+.login-main{
     color: red;
     border: 2px solid red;
     border-radius: 25px;
@@ -47,7 +64,7 @@
     transition-timing-function: ease-in-out;
 }
 
-.login-info:hover{
+.login-main:hover{
     color: white;
     background: rgb(255, 106, 106);
     border: 2px solid rgb(255, 106, 106);
@@ -57,9 +74,10 @@
     padding-right: 33px;
 }
 
-.register-info{
-    color: red;
-    border: 2px solid red;
+.register-main{
+    color: white;
+    background: rgb(255, 116, 116);
+    border: 2px solid rgb(255, 116, 116);
     border-radius: 25px;
     padding: 13px;
     padding-left: 25px;
@@ -68,14 +86,32 @@
     transition-timing-function: ease-in-out;
 }
 
-.register-info:hover{
+.register-main:hover{
     color: white;
-    background: rgb(255, 106, 106);
-    border: 2px solid rgb(255, 106, 106);
+    background: rgb(251, 81, 81);
+    border: 2px solid rgb(251, 81, 81);
     border-radius: 30px;
     padding: 16px;
     padding-left: 28px;
     padding-right: 28px;
+}
+
+.main-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: grey;
+}
+
+.main-footer a{
+    color: grey;
+    margin-bottom: 15px;
+    margin-right: 7px;
+    padding: 3px;
+    font-size: 14px;
 }
 
 /* AVATAR del usuario*/ 
