@@ -18,7 +18,11 @@
 
 <body>
     <div class="main-page">
-        <a href="{{ url('/') }}"><img class="main-logo" src="{{ asset('img/tembi-grande.png')}}" /></a>
+        <div class="logo-container">
+            <a href="{{ route('home') }}">
+                <img class="main-logo" src="{{ asset('img/tembi-grande.png')}}">
+            </a>
+        </div>
         <div class="main-buttons">
             <a class="login-main" href="{{ route('login') }}">Log In</a>
             <a class="register-main" href="{{ route('register') }}">Register</a>
@@ -26,10 +30,7 @@
     </div>
 </body>
 
-<footer>
-    <div class="main-footer">
-        <a href="">Terms </a><a href=""> Privacy</a> <p>{{ date('Y') }} Copyright © TEMBI - Ekaitz Jiménez</p>
-    </div>
-</footer>
+@extends('layouts.footer')
+
 
 </html>

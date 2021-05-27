@@ -1,4 +1,4 @@
-var url = 'http://red_social.com.devel';
+var url = 'http://tembi.com.devel';
 
 window.addEventListener("load", function(){
     //Que se active el puntero al pasar el raton

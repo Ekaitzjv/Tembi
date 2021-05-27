@@ -15,6 +15,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
+    <!--Cookies-->
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -24,6 +26,37 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
+
+<!-- Cookie Consent by https://www.CookieConsent.com -->
+<script type="text/javascript" src="//www.cookieconsent.com/releases/4.0.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function() {
+    cookieconsent.run({
+        "notice_banner_type": "interstitial",
+        "consent_type": "express",
+        "palette": "light",
+        "language": "en",
+        "page_load_consent_levels": ["strictly-necessary"],
+        "notice_banner_reject_button_hide": false,
+        "preferences_center_close_button_hide": false,
+        "website_name": "www.tembi.com.devel/",
+        "website_privacy_policy_url": "www.tembi.com.devel/privacy"
+    });
+});
+</script>
+
+<!-- End Cookie Consent by https://www.CookieConsent.com -->
+
+
+<!-- Google Analytics -->
+<script type="text/plain" cookie-consent="tracking">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', GOOGLE_PROPERTY_ID_GOES_HERE, 'auto');
+ga('send', 'pageview');
+</script>
 
 
 <body>
@@ -53,15 +86,24 @@
                         <!--como invitado-->
                         @guest
                         <!--comprobar la ruta para saber que boton mostrar-->
-                        @if (Request::is('register'))
+                        @if (Request::is('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @elseif (Request::is('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Log In') }}</a>
                         </li>
                         @else
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Log In') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
+
                         @endif
+
 
                         @else
                         <li class="nav-item home-icon">
@@ -85,7 +127,7 @@
                             </a>
                         </li>
 
-                        @include('includes.avatar')
+                        <a href="{{ route('profile', ['id' => Auth::user()->id]) }}">@include('includes.avatar')</a>
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

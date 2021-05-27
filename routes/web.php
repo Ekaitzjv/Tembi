@@ -53,6 +53,10 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/main', 'MainController@index')->name('main');
 
+//Ayuda
+Route::get('/privacy', 'MainController@privacy')->name('privacy');
+Route::get('/terms', 'MainController@terms')->name('terms');
+
 //Usuario
 Route::get('/edit', 'UserController@edit')->name('edit');
 Route::post('/user/update', 'UserController@update')->name('user.update');
