@@ -9,13 +9,18 @@ class MainController extends Controller{
         return view('main');
     }
 
-    //Página de cookies
+    //Página de privacidad
     public function privacy(){
         return view('helps.privacy');
     }
 
-    //Página de terminos
-    public function terms(){
-        return view('helps.terms');
+    //Página de politica de cookies
+    public function cookies(){
+        return view('helps.cookies');
+    }
+
+    //Página de más información
+    public function more(){
+        return view('helps.more');
     }
 }

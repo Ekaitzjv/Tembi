@@ -153,6 +153,12 @@
     margin-right: 5px;
 }
 
+/*Top navbar*/
+.name-dropdown{
+    font-size: 16px;
+    margin-top: 3px;
+}
+
 /* Publicación*/ 
 .pub_image{
     margin-left: auto;

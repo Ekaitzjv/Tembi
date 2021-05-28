@@ -9,7 +9,7 @@
 
 <footer>
     <div class="main-footer">
-        <a href="{{ route('privacy') }}"> Privacy</a><a href="{{ route('terms') }}">Terms </a>
+        <a href="{{ route('privacy') }}"> Privacy</a><a href="{{ route('cookies') }}">Cookies</a>
         <p>{{ date('Y') }} Copyright © TEMBI - Ekaitz Jiménez</p>
     </div>
 </footer>

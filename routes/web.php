@@ -53,9 +53,12 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/main', 'MainController@index')->name('main');
 
+//More
+Route::get('/more', 'MainController@more')->name('more');
+
 //Ayuda
 Route::get('/privacy', 'MainController@privacy')->name('privacy');
-Route::get('/terms', 'MainController@terms')->name('terms');
+Route::get('/cookies', 'MainController@cookies')->name('cookies');
 
 //Usuario
 Route::get('/edit', 'UserController@edit')->name('edit');
@@ -82,14 +85,3 @@ Route::get('/comment/delete/{id}', 'CommentController@delete')->name('comment.de
 Route::get('/like/{image_id}', 'LikeController@like')->name('like.like');
 Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.dislike');
 Route::get('/likes', 'LikeController@index')->name('likes');
-
-
-
-
-
-
-
-
-
-
-
