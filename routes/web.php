@@ -51,14 +51,15 @@ Route::get('/', function () {
 //Generales
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/main', 'MainController@index')->name('main');
+Route::get('/main', 'HelpController@index')->name('main');
 
-//More
-Route::get('/more', 'MainController@more')->name('more');
+//Configuración
+Route::get('/settings', 'SettingsController@index')->name('settings');
 
 //Ayuda
-Route::get('/privacy', 'MainController@privacy')->name('privacy');
-Route::get('/cookies', 'MainController@cookies')->name('cookies');
+Route::get('/help', 'HelpController@help')->name('help');
+Route::get('/privacy', 'HelpController@privacy')->name('privacy');
+Route::get('/cookies', 'HelpController@cookies')->name('cookies');
 
 //Usuario
 Route::get('/edit', 'UserController@edit')->name('edit');

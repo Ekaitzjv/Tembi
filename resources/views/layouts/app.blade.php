@@ -141,8 +141,8 @@ ga('send', 'pageview');
                                 <a class="dropdown-item" href="{{ route('edit') }}">
                                     Edit profile
                                 </a>
-                                <a class="dropdown-item" href="{{ route('more') }}">
-                                    More
+                                <a class="dropdown-item" href="{{ route('settings') }}">
+                                    Settings and privacy
                                 </a>
                                 <a class="dropdown-item cerrar-sesion" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

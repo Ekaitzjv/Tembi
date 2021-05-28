@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class MainController extends Controller{
+class HelpController extends Controller{
+
+    //Página de principal de Log In y register
     public function index(){
         return view('main');
     }
@@ -19,8 +21,8 @@ class MainController extends Controller{
         return view('helps.cookies');
     }
 
-    //Página de más información
-    public function more(){
-        return view('helps.more');
+    //Página de ayuda de politicas de privacidad
+    public function help(){
+        return view('helps.help');
     }
 }
