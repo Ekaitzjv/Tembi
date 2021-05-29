@@ -44,7 +44,7 @@ class UserController extends Controller{
         $user = \Auth::user();
         $id = $user->id;
 
-        //validación del formulario
+        //validación del formulario(comprobar lo básico)
         $validate = $this->validate($request, [  
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
@@ -55,6 +55,7 @@ class UserController extends Controller{
         ]);
         
         //Recoger datos del formulario
+            //name = pido el nombre insertado(ejemplo)
         $id = \Auth::user()->id;
         $name = $request->input('name');
         $surname = $request->input('surname');

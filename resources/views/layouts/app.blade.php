@@ -138,9 +138,6 @@ ga('send', 'pageview');
                                 <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::user()->id])}}">
                                     My Profile
                                 </a>
-                                <a class="dropdown-item" href="{{ route('edit') }}">
-                                    Edit profile
-                                </a>
                                 <a class="dropdown-item" href="{{ route('settings') }}">
                                     Settings and privacy
                                 </a>
