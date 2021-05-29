@@ -51,7 +51,7 @@ class UserController extends Controller{
             //si el nombre de usuario coincide con el id entonces solo se hará la comprobación
             'username' => 'required|string|max:255|unique:users,surname,'.$id,
             'email' => 'required|string|max:255|email|unique:users,email,'.$id,
-            'description' => '',
+            'description' => 'max:255',
         ]);
         
         //Recoger datos del formulario

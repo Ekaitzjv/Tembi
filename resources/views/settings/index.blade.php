@@ -4,7 +4,7 @@
 <div class="">
     <h2>Settings</h2>
     <div class="">
-        <a class="" href="{{ route('help') }}">More about privacy</a>
+        <a class="" href="{{ route('help') }}">More information about privacy</a>
     </div>
 </div>
 @endsection

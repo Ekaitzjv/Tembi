@@ -88,7 +88,7 @@
     padding-right: 28px;
 }
 
-.main-footer{
+.footer{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +98,7 @@
     color: grey;
 }
 
-.main-footer a{
+.footer a{
     color: grey;
     margin-bottom: 15px;
     margin-right: 7px;
