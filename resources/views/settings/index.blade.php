@@ -15,7 +15,6 @@
             More information about privacy
         </a>
     </div>
-
 </div>
 @endsection
 

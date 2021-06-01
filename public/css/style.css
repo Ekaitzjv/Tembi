@@ -476,3 +476,31 @@
 .settings-button:hover{
     background-color: rgba(236, 236, 236, 0.733);
 }
+
+/*Página more information*/
+.info-container hr{
+    width: 440px;
+}
+
+.info-container h2{
+    text-align: center;
+}
+
+.policy-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 15px;
+}
+
+.info-question{
+    width: 450px;
+}
+
+.info-question h5{
+    font-size: 18px;
+}
+
+.info-question a{
+    font-size: 15px;
+}
