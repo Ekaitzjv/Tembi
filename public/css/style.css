@@ -436,3 +436,43 @@
     background: rgba(202, 202, 202, 0.233);
     transform: scale(1.1);
 }
+
+/*Página settings*/
+.settings{
+    margin: 20px;
+}
+
+.settings h2{
+    text-align: center;
+}
+
+.settings hr{
+    width: 445px;
+}
+
+.settings-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.settings-container a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.settings-container p{
+    color: grey;
+    font-size: 14px;
+}
+
+.settings-button{
+    width: 430px;
+    max-height: 55px;
+    padding: 5px;
+}
+
+.settings-button:hover{
+    background-color: rgba(236, 236, 236, 0.733);
+}

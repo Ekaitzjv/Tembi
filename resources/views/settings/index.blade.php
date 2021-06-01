@@ -1,15 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">
+<div class="settings">
     <h2>Settings</h2>
-    <div class="">
-        <a class="" href="{{ route('edit') }}">Edit profile</a>
-        <p>See information about your account and edit your account</p>
+    <hr>
+    <div class="settings-container">
+        <a class="settings-button" href="{{ route('edit') }}">
+            Edit profile
+            <p>See information about your account and edit your account</p>
+        </a>
     </div>
-    <div class="">
-        <a class="" href="{{ route('help') }}">More information about privacy</a>
+    <div class="settings-container">
+        <a class="settings-button" href="{{ route('help') }}">
+            More information about privacy
+        </a>
     </div>
+
 </div>
 @endsection
 
