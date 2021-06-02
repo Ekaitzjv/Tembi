@@ -4,6 +4,14 @@
     float: left;
 }
 
+/*Top navbar*/
+/*MOBILE*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .top-icon{
+        margin-left: 45%;
+    }
+}
+
 /*Página INFO*/
 .logo-container{
     display: flex;
@@ -105,6 +113,15 @@
     margin-right: 7px;
     padding: 3px;
     font-size: 14px;
+}
+
+/*MOBILE*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .footer{
+        margin-right: 2px;
+        padding: 3px;
+        font-size: 12px;
+    } 
 }
 
 /* AVATAR del usuario*/ 
@@ -344,6 +361,17 @@
     max-width: 40%;
 }
 
+/*MOBILE*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .view_image img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;    
+        padding: 0;
+        max-width: 95%;
+    }
+}
+
 /*Fecha creación*/
 .created_at-main{
     float: right;
@@ -477,9 +505,38 @@
     background-color: rgba(236, 236, 236, 0.733);
 }
 
+/*MOBILE*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .settings hr{
+        width: 350px;
+    }
+
+    .settings-container{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin-top: 10px;
+    }
+
+    .settings-container a{
+        font-size: 18px;
+    }
+    
+    .settings-container p{
+        color: grey;
+        font-size: 15px;
+    }
+
+    .settings-button{
+        width: 430px;
+        max-height: 75px;
+        padding: 5px;
+    }
+}
+
 /*Página more information*/
 .info-container hr{
-    width: 440px;
+    width: 400px;
 }
 
 .info-container h2{
@@ -494,7 +551,7 @@
 }
 
 .info-question{
-    width: 450px;
+    width: 400px;
 }
 
 .info-question h5{
@@ -503,4 +560,30 @@
 
 .info-question a{
     font-size: 15px;
+} 
+
+/*MOBILE*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .info-container hr{
+        width: 350px;
+    }
+
+    .policy-container{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin: 15px;
+    }
+
+    .info-question{
+        width: 400px;
+    }
+    
+    .info-question h5{
+        font-size: 15px;
+    }
+    
+    .info-question a{
+        font-size: 15px;
+    } 
 }

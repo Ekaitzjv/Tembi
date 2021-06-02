@@ -107,22 +107,22 @@ ga('send', 'pageview');
 
                         @else
                         <li class="nav-item home-icon">
-                            <a class="nav-link" href="{{ route('home') }}">
+                            <a class="nav-link top-icon" href="{{ route('home') }}">
                                 <img src="{{asset('img/home.png')}}" />
                             </a>
                         </li>
                         <li class="nav-item people-icon">
-                            <a class="nav-link" href="{{ route('user.index') }}">
+                            <a class="nav-link top-icon" href="{{ route('user.index') }}">
                                 <img src="{{asset('img/people.png')}}" />
                             </a>
                         </li>
                         <li class="nav-item heart-icon">
-                            <a class="nav-link" href="{{ route('likes') }}">
+                            <a class="nav-link top-icon" href="{{ route('likes') }}">
                                 <img src="{{asset('img/Main-heart.png')}}" />
                             </a>
                         </li>
                         <li class="nav-item add-icon">
-                            <a class="nav-link" href="{{ route('image.create') }}">
+                            <a class="nav-link top-icon" href="{{ route('image.create') }}">
                                 <img src="{{asset('img/add.png')}}" />
                             </a>
                         </li>
@@ -130,7 +130,7 @@ ga('send', 'pageview');
                         <a href="{{ route('profile', ['id' => Auth::user()->id]) }}">@include('includes.avatar')</a>
 
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle name-dropdown" href="#" role="button"
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle name-dropdown top-icon" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
