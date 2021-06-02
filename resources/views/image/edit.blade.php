@@ -21,8 +21,6 @@
                                     <img src="{{ route('image.file',['filename' => $image->image_path]) }}"/>
                                 </div>
                                 @endif
-                                <input id="image_path" type="file" name="image_path"
-                                    class="form-control {{ $errors->has('image_path') ? 'is-invalid' : '' }}" />
 
                                 @if($errors->has('image_path'))
                                 <span class="invalid-feedback" role="alert">
