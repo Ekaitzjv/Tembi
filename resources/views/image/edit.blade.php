@@ -16,16 +16,10 @@
                         <div class="form-group row">
                             <label for="image_path" class="col-md-3 col-form-label text-md-right">Image</label>
                             <div class="col-md-7">
-                                @if($image->user->image)
+                                @if($image->image_path)
                                 <div class="edit-image">
                                     <img src="{{ route('image.file',['filename' => $image->image_path]) }}"/>
                                 </div>
-                                @endif
-
-                                @if($errors->has('image_path'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('image_path') }}</strong>
-                                </span>
                                 @endif
                             </div>
                         </div>
@@ -35,7 +29,7 @@
                             <div class="col-md-7">
                                 <textarea id="description" name="description"
                                     class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}"
-                                    required>{{$image->description}}</textarea>
+                                    >{{$image->description}}</textarea>
 
                                 @if($errors->has('description'))
                                 <span class="invalid-feedback" role="alert">
