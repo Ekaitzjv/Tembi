@@ -28,7 +28,7 @@ class ImageController extends Controller
         //Validación
         $validate = $this->validate($request, [
             'description' => '',
-            'image_path' => 'required|image|max:10240'
+            'image_path' => 'required|image|max:10240',
         ]);
 
         //recojer los datos
@@ -40,6 +40,8 @@ class ImageController extends Controller
         $image = new Image();
         $image->user_id = $user->id;
         $image->description = $description;
+        $image->all_likes = 0;
+
 
         //subir imagen
         if($image_path){
@@ -163,13 +165,15 @@ class ImageController extends Controller
 
     //Imagenes populares
     public function top(){
-    $user = \Auth::user();
-    $like = new Like();
 
-    $images = Image::where('id', $like->image_id)
-                    ->orderBy('id', 'desc')
-                    ->get();
+    $user = \Auth::user();
+    $images = new Like();
     
+    //sacar las 5 imagenes con más likes
+    $images = Image::where('all_likes', '>', 0)
+                    ->orderBy('all_likes', 'desc')
+                    ->limit(5)
+                    ->get();
     
 /*     dd($likes);
  */     return view('image.popular', [
