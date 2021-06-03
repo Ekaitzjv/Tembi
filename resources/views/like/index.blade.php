@@ -8,7 +8,7 @@
                 <h3>Saved pictures</h3>
                 <hr>
             @else
-                <center><h4>You don't have saved pictures</h4></center>
+                <center><h4>You don't have favourite pictures</h4></center>
             @endif
                 <!--Bucle de publicaciones-->
                     @foreach($likes as $like)

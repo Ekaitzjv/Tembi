@@ -160,4 +160,20 @@ class ImageController extends Controller
         return redirect()->route('image.detail', ['id' => $image_id])
                         ->with(['message' => 'Image updated correctly']);
     }
+
+    //Imagenes populares
+    public function top(){
+    $user = \Auth::user();
+    $like = new Like();
+
+    $images = Image::where('id', $like->image_id)
+                    ->orderBy('id', 'desc')
+                    ->get();
+    
+    
+/*     dd($likes);
+ */     return view('image.popular', [
+        'images' => $images
+        ]);  
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Like;
+use App\Image;
 
 class LikeController extends Controller{
     public function __construct(){
@@ -33,18 +34,27 @@ class LikeController extends Controller{
                             ->where('image_id', $image_id)
         //contar los likes totales en una publicacion heachos por el usuario logueado
                             ->count();
+
         //Hacer like cuando es 0 la cantidad de likes
         if($isset_like == 0){
             $like = new Like();
+            $image = new Image();
+
             $like->user_id = $user->id;
             $like->image_id = (int)$image_id;
-    
+            
+            //Sumar 1 like en la tabla images
+            $image = Image::find($image_id);
+            $image->all_likes = $image->all_likes + 1;
+
             //Guardar en la base de datos el objeto
             $like->save();
+            $image->update();
 
             return response()->json([
                 'like' => $like
             ]);
+
         }else{
             return response()->json([
                 'message' => 'El like ya existe, no puede haber 2'
@@ -67,8 +77,14 @@ class LikeController extends Controller{
 
         //si exite like, lo borramos
         if($like){
+
+            //Restar 1 like en la tabla images
+            $image = Image::find($image_id);
+            $image->all_likes = $image->all_likes - 1;
+
             //Eliminar like
             $like->delete();
+            $image->update();
 
             return response()->json([
                 'like' => $like,
@@ -80,4 +96,5 @@ class LikeController extends Controller{
             ]);
         }
     }
+
 }
