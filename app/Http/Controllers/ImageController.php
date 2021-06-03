@@ -136,25 +136,17 @@ class ImageController extends Controller
     public function update(Request $request){
         //Validación
         $validate = $this->validate($request, [
-            'description' => 'required',
+            'description' => '',
             'image_path' => 'image'
         ]);
 
         //Recoger datos
         $image_id = $request->input('image_id');
-        $image_path = $request->file('image_path');
         $description = $request->input('description');
         
         //Conseguir objeto image
         $image = Image::find($image_id);
         $image->description = $description;
-
-        //Subir fichero
-        if($image_path){
-            $image_path_name = time().$image_path->getClientOriginalName();
-            Storage::disk('images')->put($image_path_name, File::get($image_path));
-            $image->image_path = $image_path_name;
-        }
 
         //Actualizar registro
         $image->update();
@@ -166,18 +158,17 @@ class ImageController extends Controller
     //Imagenes populares
     public function top(){
 
-    $user = \Auth::user();
-    $images = new Like();
-    
-    //sacar las 5 imagenes con más likes
-    $images = Image::where('all_likes', '>', 0)
-                    ->orderBy('all_likes', 'desc')
-                    ->limit(5)
-                    ->get();
-    
-/*     dd($likes);
- */     return view('image.popular', [
-        'images' => $images
-        ]);  
+        $user = \Auth::user();
+        $images = new Like();
+        
+        //sacar las 5 imagenes más vistas 
+        $images = Image::where('all_likes', '>', 0)
+                        ->orderBy('all_likes', 'desc')
+                        ->limit(5)
+                        ->get();
+        
+        return view('image.popular', [
+            'images' => $images
+            ]);  
     }
 }

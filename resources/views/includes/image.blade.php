@@ -70,7 +70,7 @@
             <img src="{{asset('img/like_empty.png')}}" data-id="{{$image->id}}" class="btn-dislike" />
             @endif
             <span class="count_quantity">
-                @if(count($image->likes) != 0)
+                @if(count($image->likes) > 0)
                 {{count($image->likes)}}
                 @endif
             </span>
@@ -80,7 +80,7 @@
             <a href="{{ route('image.detail', ['id' => $image->id])}}">
                 <img src="{{asset('img/comments.png')}}" />
                 <span class="count_quantity">
-                    @if(count($image->comments) != 0)
+                    @if(count($image->comments) > 0)
                     {{count($image->comments)}}
                     @endif
                 </span>
