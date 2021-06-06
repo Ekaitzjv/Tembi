@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <!--Comprobar si hay imagenes favoritas-->
             @if(count($likes))
-                <h3>Saved pictures</h3>
+                <h3>Liked pictures</h3>
                 <hr>
             @else
                 <center><h4>You don't have favourite pictures</h4></center>

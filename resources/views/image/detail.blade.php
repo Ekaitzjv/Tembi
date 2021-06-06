@@ -77,13 +77,13 @@
                     <!--comments-->
                     <div class="comments-detail">
                         <p>
-                            @if(count($image->comments) != 0)
+                            @if(count($image->comments) > 0)
                             {{count($image->comments)}}
-                            @if(count($image->comments) == 1)
-                            comment
-                            @else
-                            comments
-                            @endif
+                                @if(count($image->comments) == 1)
+                                comment
+                                @else
+                                comments
+                                @endif
                             @else
                             Add a comment...
                             @endif
