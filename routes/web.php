@@ -67,6 +67,7 @@ Route::post('/user/update', 'UserController@update')->name('user.update');
 Route::get('/user/image/{filename}', 'UserController@getImage')->name('user.image');
 Route::get('/profile/{id}', 'UserController@profile')->name('profile');
 Route::get('/people/{search?}', 'UserController@index')->name('user.index');
+Route::get('/activity', 'UserController@activity')->name('activity');
 
 //Imagen
 Route::get('/create', 'ImageController@create')->name('image.create');
@@ -77,7 +78,7 @@ Route::get('/view/{id}', 'ImageController@view')->name('image.view');
 Route::get('/image/delete/{id}', 'ImageController@delete')->name('image.delete');
 Route::get('/image/edit/{id}', 'ImageController@edit')->name('image.edit');
 Route::post('/image/update', 'ImageController@update')->name('image.update');
-Route::get('/popular', 'ImageController@top')->name('top');
+Route::get('/trendy', 'ImageController@trendy')->name('trendy');
 
 
 //Comentarios
