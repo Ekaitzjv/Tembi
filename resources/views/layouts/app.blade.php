@@ -126,30 +126,38 @@ ga('send', 'pageview');
                                 <img src="{{asset('img/add.png')}}" />
                             </a>
                         </li>
-
-                        <a href="{{ route('profile', ['id' => Auth::user()->id]) }}">@include('includes.avatar')</a>
-
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle name-dropdown top-icon" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle name-dropdown top-icon" href="#"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::user()->id])}}">
+                                <a class="dropdown-item top-dropdown"
+                                    href="{{ route('profile', ['id' => Auth::user()->id])}}">
                                     My Profile
                                 </a>
-                                <a class="dropdown-item" href="{{ route('settings') }}">
+                                <a class="dropdown-item top-dropdown" href="{{ route('settings') }}">
                                     Settings and privacy
                                 </a>
                                 <a class="dropdown-item cerrar-sesion" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
+                        </li>
+                        <a href="{{ route('profile', ['id' => Auth::user()->id]) }}">@include('includes.avatar')</a>
+                        <li class="nav-item add-icon">
+                            <a class="nav-link top-icon top-bell" href="{{ route('activity') }}">
+                                <img src="{{asset('img/bell.png')}}" />
+                            </a>
+                        </li>
+                        <li class="nav-item add-icon">
+                            <a class="nav-link top-icon" href="{{ route('trendy') }}">
+                                <img src="{{asset('img/popular.png')}}" />
+                            </a>
                         </li>
                         @endguest
                     </ul>

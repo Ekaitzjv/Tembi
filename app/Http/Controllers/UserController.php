@@ -103,4 +103,17 @@ class UserController extends Controller{
             'user' => $user
         ]);
     }
+
+    //Actividad de la cuenta y notificaciones
+    public function activity(){
+        //conseguir el usuario identificado y que solo pueda acceder el
+        $id = \Auth::user()->id;
+        $user = User::find($id);
+
+        //Pasarle la variable $user al perfil
+        return view('user.activity', [
+            'user' => $user
+        ]);
+        
+    }
 }
