@@ -156,19 +156,19 @@ class ImageController extends Controller
     }
 
     //Imagenes populares
-    public function top(){
+    public function trendy(){
 
         $user = \Auth::user();
         $images = new Like();
         
-        //sacar las 5 imagenes más vistas 
+        //sacar las 10 imagenes con más likes 
         $images = Image::where('all_likes', '>', 0)
                         ->orderBy('all_likes', 'desc')
-                        ->limit(5)
+                        ->limit(10)
                         ->get();
-        
-        return view('image.popular', [
+    
+        return view('image.trendy', [
             'images' => $images
-            ]);  
+        ]);
     }
 }
