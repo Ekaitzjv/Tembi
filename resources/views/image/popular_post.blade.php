@@ -2,20 +2,20 @@
 <div class="card pub_image">
     <div class="card-header">
         <!--TOP number-->
-        <div class="nav-item dropdown dots">
-        {{$key+1}}
+        <div class="hashtag">
+            <h5>#{{$key+1}}</h5>
         </div>
         <!--Imagen avatar-->
         <div class="container-avatar avatar-main">
             <a href=" {{ route('profile', ['id' => $image->user->id])}}">
-            @if($image->user->image)
+                @if($image->user->image)
                 <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
-            @else
+                @else
                 <img class="avatar" src="{{ asset('img/default-avatar.jpg')}}" />
-            @endif
+                @endif
             </a>
         </div>
-        
+
         <div class="data-username">
             <!--Nombre de usuario-->
             <a href="{{ route('profile', ['id' => $image->user->id])}}">{{$image->user->username}}</a>
