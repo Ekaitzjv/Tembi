@@ -7,11 +7,8 @@
             <!--mensaje-->
             @include('includes.message')
             
-            <!--Bucle de publicaciones-->
-            @foreach($images as $image)
-                @include('includes.image', ['image'=>$image])
-            @endforeach
-            
+             <!--Bucle de publicaciones-->
+             @each('includes.image', $images , 'image')
             <!--PAGINACIÓN-->
             <div class="clearfix"></div>
             {{$images->links()}}

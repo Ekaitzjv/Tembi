@@ -36,9 +36,7 @@
             </div>
             @else
             <!--Bucle de publicaciones-->
-            @foreach($user->images as $image)
-            @include('includes.image', ['image'=>$image])
-            @endforeach
+            @each('includes.image', $user->images , 'image' )
             @endif
 
         </div>

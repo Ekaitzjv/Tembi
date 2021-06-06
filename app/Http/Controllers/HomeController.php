@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Image;
+use App\Comment;
+use App\Like;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -31,5 +34,4 @@ class HomeController extends Controller
             'images' => $images
             ]);
     }
-    
 }
