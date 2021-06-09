@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use App\Image;
+use App\User;
 
 class CommentController extends Controller
 {
@@ -31,8 +33,19 @@ class CommentController extends Controller
         $comment->image_id = $image_id;
         $comment->content = $content;
         
+        //Sumar 1 comentario en la tabla de usuarios
+        $image_id = $comment->image_id;
+        $image = Image::find($image_id);
+        $id = $image->user_id;
+
+        $user = User::find($id);
+        if($user->all_comments >= 0){
+            $user->all_comments = $user->all_comments + 1;
+        }
+
         //Guardar en DB
         $comment->save();
+        $user->update();
 
         //Redirección
         return redirect()->route('image.detail', ['id' => $image_id])
@@ -49,11 +62,22 @@ class CommentController extends Controller
         //Conseguir objeto del comentario
         $comment = Comment::find($id);
 
+        //Restar 1 comentario en la tabla de usuarios
+        $image_id = $comment->image_id;
+        $image = Image::find($image_id);
+        $id = $image->user_id;
+
+        $user = User::find($id);
+        if($user->all_comments > 0){
+            $user->all_comments = $user->all_comments - 1;
+        }
+
         //Comprobar si soy el dueño del comentario o de la publicación
                                                     //Utilizo la función image del modelo
         if($user && ($comment->user_id == $user->id || $comment->image->user_id == $user->id)){
             $comment->delete();
-
+            $user->update();
+            
         //Redirección
         return redirect()->route('image.detail', ['id' => $comment->image->id])
                         ->with([

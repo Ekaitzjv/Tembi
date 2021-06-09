@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Like;
 use App\Image;
+use App\User;
 
 class LikeController extends Controller{
     public function __construct(){
@@ -47,9 +48,17 @@ class LikeController extends Controller{
             $image = Image::find($image_id);
             $image->all_likes = $image->all_likes + 1;
 
+            //Sumar 1 like en la tabla de usuarios
+            $id = $image->user_id;
+            $user = User::find($id);
+            if($user->all_likes >= 0){
+                $user->all_likes = $user->all_likes + 1;
+            }
+            
             //Guardar en la base de datos el objeto
             $like->save();
             $image->update();
+            $user->update();
 
             return response()->json([
                 'like' => $like
@@ -82,9 +91,17 @@ class LikeController extends Controller{
             $image = Image::find($image_id);
             $image->all_likes = $image->all_likes - 1;
 
+            //Restar 1 like en la tabla de usuarios
+            $id = $image->user_id;
+            $user = User::find($id);
+            if($user->all_likes > 0){
+                $user->all_likes = $user->all_likes - 1;
+            }
+
             //Eliminar like
             $like->delete();
             $image->update();
+            $user->update();
 
             return response()->json([
                 'like' => $like,

@@ -1,21 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            @if(count($user->images) == 0)
-            <div class="profile-empty">
-                <center>
-                    <h3>No activity Yet</h3>
-                </center>
-            </div>
-            @else
-            <!--Bucle de publicaciones-->
-            @each('user.notification', $user->images , 'image')
-            @endif
-
-        </div>
-    </div>
+@if ($user->all_likes > 0 || $user->all_comments > 0)
+<!--Bucle de notificaciones-->
+@each('user.notification', $user->images , 'image')
+@else
+<div class="text-center no-activity">
+    <h3>No activity yet</h3>
 </div>
+@endif
 @endsection
