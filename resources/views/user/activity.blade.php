@@ -1,12 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-@if ($user->all_likes > 0 || $user->all_comments > 0)
-<!--Bucle de notificaciones-->
-@each('user.notification', $user->images , 'image')
+
+@if (count($user->images) > 0)
+    <div class="text-center">
+        <span class="h4">ACTIVITY</span>
+    </div>
+
+    <!--Bucle de notificaciones-->
+    @each('user.notification', $user->images , 'image')
+
 @else
-<div class="text-center no-activity">
-    <h3>No activity yet</h3>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="notification">
+                <div class="text-center no-activity">
+                    <span class="h4">No likes or comments yet</span>
+                    <p class="inform-activity">Here you will see the notifications of your account</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endif
+
 @endsection
+
+@extends('layouts.footer')

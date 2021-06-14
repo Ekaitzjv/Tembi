@@ -15,8 +15,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
-    <!--Cookies-->
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-
 <!-- End Cookie Consent by https://www.CookieConsent.com -->
 
 
@@ -126,6 +123,9 @@ ga('send', 'pageview');
                                 <img src="{{asset('img/add.png')}}" />
                             </a>
                         </li>
+                        <a href="{{ route('profile', ['id' => Auth::user()->id]) }}">
+                            @include('includes.avatar')
+                        </a>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle name-dropdown top-icon" href="#"
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -148,17 +148,23 @@ ga('send', 'pageview');
                                 </form>
                             </div>
                         </li>
-                        <a href="{{ route('profile', ['id' => Auth::user()->id]) }}">@include('includes.avatar')</a>
                         <li class="nav-item add-icon">
                             <a class="nav-link top-icon top-bell" href="{{ route('activity') }}">
                                 <img src="{{asset('img/bell.png')}}" />
                             </a>
                         </li>
                         <li class="nav-item add-icon">
-                            <a class="nav-link top-icon" href="{{ route('trendy') }}">
+                            <a class="nav-link top-icon top-trendy" href="{{ route('trendy') }}">
                                 <img src="{{asset('img/popular.png')}}" />
                             </a>
                         </li>
+                        @if (Auth::user()->role == '1234')
+                        <li class="nav-item add-icon">
+                            <a class="nav-link top-icon top-admin" href="{{ route('admin') }}">
+                                <img src="{{asset('img/admin.png')}}" />
+                            </a>
+                        </li>
+                        @endif
                         @endguest
                     </ul>
                 </div>

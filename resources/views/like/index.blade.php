@@ -5,10 +5,15 @@
         <div class="col-md-8">
             <!--Comprobar si hay imagenes favoritas-->
             @if(count($likes))
-                <h3>Liked pictures</h3>
+                <div class="text-center">
+                    <span class="h4">FAVORITE PICTURES</span>
+                </div>
                 <hr>
             @else
-                <center><h4>You don't have favourite pictures</h4></center>
+                <div class="text-center">
+                    <span class="h4">You don't have favourite pictures</span>
+                    <p class="inform-activity">You have to like a post to make it appear here!</p>
+                </div>
             @endif
                 <!--Bucle de publicaciones-->
                     @foreach($likes as $like)

@@ -8,27 +8,26 @@
                 <img class="avatar" src="{{ asset('img/dots.png')}}" />
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{{ route('image.edit', ['id' => $image->id])}}">
-                    Edit
+                <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::user()->id])}}">
+                    Update
                 </a>
                 <a class="dropdown-item delete-publication" href="{{ route('image.delete', ['id' => $image->id]) }}">
                     Delete
                 </a>
             </div>
         </div>
-        
         @endif
         <!--Imagen avatar-->
         <div class="container-avatar avatar-main">
             <a href=" {{ route('profile', ['id' => $image->user->id])}}">
-            @if($image->user->image)
+                @if($image->user->image)
                 <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
-            @else
+                @else
                 <img class="avatar" src="{{ asset('img/default-avatar.jpg')}}" />
-            @endif
+                @endif
             </a>
         </div>
-        
+
         <div class="data-username">
             <!--Nombre de usuario-->
             <a href="{{ route('profile', ['id' => $image->user->id])}}">{{$image->user->username}}</a>

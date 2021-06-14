@@ -18,6 +18,7 @@ class LikeController extends Controller{
         $user = \Auth::user();
         $likes = Like::where('user_id', $user->id)->orderBy('id', 'desc')
                     ->paginate(15);
+                    
         return view('like.index', [
             'likes' => $likes
         ]);
@@ -39,7 +40,6 @@ class LikeController extends Controller{
         //Hacer like cuando es 0 la cantidad de likes
         if($isset_like == 0){
             $like = new Like();
-            $image = new Image();
 
             $like->user_id = $user->id;
             $like->image_id = (int)$image_id;
@@ -47,18 +47,10 @@ class LikeController extends Controller{
             //Sumar 1 like en la tabla images
             $image = Image::find($image_id);
             $image->all_likes = $image->all_likes + 1;
-
-            //Sumar 1 like en la tabla de usuarios
-            $id = $image->user_id;
-            $user = User::find($id);
-            if($user->all_likes >= 0){
-                $user->all_likes = $user->all_likes + 1;
-            }
             
             //Guardar en la base de datos el objeto
             $like->save();
             $image->update();
-            $user->update();
 
             return response()->json([
                 'like' => $like
@@ -91,17 +83,9 @@ class LikeController extends Controller{
             $image = Image::find($image_id);
             $image->all_likes = $image->all_likes - 1;
 
-            //Restar 1 like en la tabla de usuarios
-            $id = $image->user_id;
-            $user = User::find($id);
-            if($user->all_likes > 0){
-                $user->all_likes = $user->all_likes - 1;
-            }
-
             //Eliminar like
             $like->delete();
             $image->update();
-            $user->update();
 
             return response()->json([
                 'like' => $like,

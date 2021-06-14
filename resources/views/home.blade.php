@@ -7,7 +7,7 @@
             <!--mensaje-->
             @include('includes.message')
             
-             <!--Bucle de publicaciones-->
+            <!--Bucle de publicaciones-->
              @each('includes.image', $images , 'image')
             <!--PAGINACIÓN-->
             <div class="clearfix"></div>

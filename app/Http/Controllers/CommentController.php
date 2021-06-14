@@ -19,7 +19,7 @@ class CommentController extends Controller
 
         $validate = $this->validate($request, [
             'image_id' => 'integer|required',
-            'content' => 'string|required'
+            'content' => 'string|required|max:255'
         ]);
 
         //Recoger datos del formulario
@@ -33,19 +33,8 @@ class CommentController extends Controller
         $comment->image_id = $image_id;
         $comment->content = $content;
         
-        //Sumar 1 comentario en la tabla de usuarios
-        $image_id = $comment->image_id;
-        $image = Image::find($image_id);
-        $id = $image->user_id;
-
-        $user = User::find($id);
-        if($user->all_comments >= 0){
-            $user->all_comments = $user->all_comments + 1;
-        }
-
         //Guardar en DB
         $comment->save();
-        $user->update();
 
         //Redirección
         return redirect()->route('image.detail', ['id' => $image_id])
@@ -61,16 +50,6 @@ class CommentController extends Controller
 
         //Conseguir objeto del comentario
         $comment = Comment::find($id);
-
-        //Restar 1 comentario en la tabla de usuarios
-        $image_id = $comment->image_id;
-        $image = Image::find($image_id);
-        $id = $image->user_id;
-
-        $user = User::find($id);
-        if($user->all_comments > 0){
-            $user->all_comments = $user->all_comments - 1;
-        }
 
         //Comprobar si soy el dueño del comentario o de la publicación
                                                     //Utilizo la función image del modelo

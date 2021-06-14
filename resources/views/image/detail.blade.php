@@ -49,6 +49,19 @@
                     <div class="image-container">
                         <img src="{{ route('image.file',['filename' => $image->image_path]) }}" />
                     </div>
+                    <script>
+                    function report() {
+                        confirm("Are you sure to report this post?");
+                    }
+                    </script>
+                    <!--BOTONES INFERIORES-->
+                    @if (Auth::user()->id != $image->user_id)
+                    <div class="report-image">
+                        <a onclick="report()" href="{{route('report', ['image_id' => $image->id]) }}">
+                            <img src="{{asset('img/report.png')}}" />
+                        </a>
+                    </div>
+                    @endif
                     <!--created at(fecha)-->
                     <div class="created_at-main">
                         <span>{{\FormatTime::LongTimeFilter($image->created_at)}}</span>
@@ -79,11 +92,11 @@
                         <p>
                             @if(count($image->comments) > 0)
                             {{count($image->comments)}}
-                                @if(count($image->comments) == 1)
-                                comment
-                                @else
-                                comments
-                                @endif
+                            @if(count($image->comments) == 1)
+                            comment
+                            @else
+                            comments
+                            @endif
                             @else
                             Add a comment...
                             @endif
