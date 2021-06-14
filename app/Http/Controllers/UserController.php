@@ -37,6 +37,189 @@ class UserController extends Controller{
         ]);
     }
 
+    /*Administrador*/
+    public function admin(){
+        $user = \Auth::user();
+
+        //sacar todas las imagenes
+        $images = Image::get();
+        //sacar todos los usuarios
+        $users = User::get();
+        //sacar todos los usuarios
+        $likes = Like::get();
+        //sacar todos los usuarios
+        $comments = Comment::get();
+        //sacar todos los usuarios
+        $reports = Report::get();
+
+        if($user->role == '1234'){
+            return view('admin.index',[
+                'images' => $images,
+                'users' => $users,
+                'likes' => $likes,
+                'comments' => $comments,
+                'reports' => $reports
+            ]);
+
+        }else{
+            return redirect()->route('home');
+        }
+    }
+
+    public function reports(){
+        $user = \Auth::user();
+
+        $report = Report::get();
+        
+        if($user->role == '1234'){
+            return view('admin.reports',[
+                'report' => $report
+            ]);
+            
+        }else{
+            return redirect()->route('home');
+        }
+    }
+
+    //Eliminar perfil de persona denunciada
+    public function ReportUserDelete($id){
+            
+            $user = User::find($id);
+
+            if(User::find($id)){
+                //Borrar los comentarios, likes y reportes hechos por el usuario
+                $comments = Comment::where('user_id', $id)->get();
+                $likes = Like::where('user_id', $id)->get();
+                $reports = Report::where('user_id', $id)->get();
+
+                    //Eliminar comentarios
+                    if($comments && count($comments) >= 1){
+                        foreach($comments as $comment){
+                            $comment->delete();
+                        }
+                    }
+                    
+                    //Eliminar likes
+                    if($likes && count($likes) >= 1){
+                        foreach($likes as $like){
+                            $like->delete();
+                        }
+                    }
+
+                    //Eliminar reportes
+                    if($reports && count($reports) >= 1){
+                        foreach($reports as $report){
+                            $report->delete();
+                        }
+                    }
+                
+                //Borrar comentarios y likes de las publicaciones del usuario
+                $id = $user->id;
+                $images = Image::where('user_id', $id)->get();
+
+                foreach($images as $image){
+                    //sacar el id de cada imagen del usuario
+                    $id = $image->id;
+                    $comments = Comment::where('image_id', $id)->get();
+                    $likes = Like::where('image_id', $id)->get();
+                    $reports = Report::where('image_id', $id)->get();
+
+                        //Eliminar comentarios
+                        if($comments && count($comments) >= 1){
+                            foreach($comments as $comment){
+                                $comment->delete();
+                            }
+                        }
+                        
+                        //Eliminar likes
+                        if($likes && count($likes) >= 1){
+                            foreach($likes as $like){
+                                $like->delete();
+                            }
+                        }
+
+                        //Eliminar Reportes que le hayan hecho al usuario
+                        if($reports && count($reports) >= 1){
+                            foreach($reports as $report){
+                                $report->delete();
+                            }
+                        }
+                }
+                
+                //Eliminar publicaciones del usuario
+                if($images && count($images) >= 1){
+                    foreach($images as $image){
+                        $image->delete();
+                        Storage::disk('images')->delete($image->image_path);
+                    }
+                }
+
+                //Borrar usuario
+                $user->delete(); 
+                return redirect()->route('reports');
+        }
+    }
+    
+    //Eliminar post denunciado
+    public function ReportPostDelete($id){
+        $user = \Auth::user();
+        //sacar la imagen que necesito por id
+        $image = Image::find($id);
+        //sacar todos los comentarios de la imagen por el id
+        $comments = Comment::where('image_id', $id)->get();
+        //sacar todos los likes de la imagen por el id
+        $likes = Like::where('image_id', $id)->get();
+        //sacar todos los reportes de la imagen por el id
+        $reports = Report::where('image_id', $id)->get();
+
+        //Comprobar que soy el admin
+        if($user && $image && $user->role == '1234'){
+
+            //Eliminar comentarios
+            if($comments && count($comments) >= 1){
+                foreach($comments as $comment){
+                    $comment->delete();
+                }
+            }
+            
+            //Eliminar likes
+            if($likes && count($likes) >= 1){
+                foreach($likes as $like){
+                    $like->delete();
+                }
+            }
+
+            //Eliminar reportes
+            if($reports && count($reports) >= 1){
+                foreach($reports as $report){
+                    $report->delete();
+                }
+            }
+
+            //Eliminar ficheros de imagen guardados en el storage y en la ddbb
+            Storage::disk('images')->delete($image->image_path);
+            //Eliminar registro de la imagen
+            $image->delete();
+        }
+        return redirect()->route('reports');
+    }
+
+    //Eliminar post denunciado
+    public function ReportCancel($id){
+        $user = \Auth::user();
+
+        //sacar el reporte
+        $report = Report::find($id);
+
+        //Comprobar que soy el admin
+        if($user && $report && $user->role == '1234'){
+            //Eliminar registro de la imagen
+            $report->delete();
+        }
+        return redirect()->route('reports');
+    }
+
+    /*Editar perfil*/
     public function edit(){
         return view('user.edit');
     }
@@ -91,6 +274,9 @@ class UserController extends Controller{
                          ->with(['message'=>'User updated successfully']);
     }
 
+    public function delete($id){
+
+        if($id != \Auth::user()->id){
             return redirect()->route('home')
             ->with([
             'message' => 'You are not allowed to delete that user'
