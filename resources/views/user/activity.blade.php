@@ -26,5 +26,3 @@
 @endif
 
 @endsection
-
-@extends('layouts.footer')

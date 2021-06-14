@@ -8,8 +8,8 @@
                 <img class="avatar" src="{{ asset('img/dots.png')}}" />
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::user()->id])}}">
-                    Update
+                <a class="dropdown-item edit-publication" href="{{ route('image.edit', ['id' => $image->id]) }}">
+                    Edit
                 </a>
                 <a class="dropdown-item delete-publication" href="{{ route('image.delete', ['id' => $image->id]) }}">
                     Delete

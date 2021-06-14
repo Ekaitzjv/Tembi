@@ -11,7 +11,9 @@
              @each('includes.image', $images , 'image')
             <!--PAGINACIÓN-->
             <div class="clearfix"></div>
-            {{$images->links()}}
+            <div class="row justify-content-center">
+                {{$images->links()}}
+            </div>
         </div>
     </div>
 </div>

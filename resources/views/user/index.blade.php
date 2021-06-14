@@ -32,7 +32,6 @@
                     @endif
                     <div class="data-user">
                         <h5 class="username-profile">{{$user->username}}</h5>
-                        <h5 class="name-surname-profile">{{$user->name.' '.$user->surname}}</h5>
                     </div>
                     @if($user->description)
                     <div class="container description-profile-box">
