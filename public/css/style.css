@@ -4,6 +4,23 @@
     float: left;
 }
 
+/*Scroll bar*/
+body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+  
+body::-webkit-scrollbar-track {
+    background: #f8fafc;
+    border: 1px solid #e2e3e4;  /* creates padding around scroll thumb */
+            /* color of the tracking area */
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(156, 156, 156);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 1px solid rgb(156, 156, 156);  /* creates padding around scroll thumb */
+}
+
 /*Top navbar*/
 /*WEB*/
 @media (max-width: 780px) {
@@ -239,12 +256,18 @@
     margin-right: 5px;
 }
 
+.dots .edit-publication:hover{
+    background: rgb(230, 230, 230);
+    transition: 0.2s;
+}
+
 .dots .delete-publication{
     color: rgb(184, 0, 0);
 }
 
 .dots .delete-publication:hover{
     background: rgb(255, 207, 207);
+    transition: 0.2s;
 }
 
 /* Imagen de la publicación*/ 
