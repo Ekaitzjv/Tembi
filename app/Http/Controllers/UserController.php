@@ -7,6 +7,10 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\User;
+use App\Image;
+use App\Like;
+use App\Comment;
+use App\Report;
 
 class UserController extends Controller{
 
@@ -28,7 +32,6 @@ class UserController extends Controller{
             //metodo de la página gente
             $users = User::orderBy('id', 'desc')->paginate(15);
         }
-        
         return view('user.index', [
             'users' => $users
         ]);
@@ -88,6 +91,87 @@ class UserController extends Controller{
                          ->with(['message'=>'User updated successfully']);
     }
 
+            return redirect()->route('home')
+            ->with([
+            'message' => 'You are not allowed to delete that user'
+            ]);
+        }
+
+        if(User::find($id)){
+            $user = \Auth::user($id);
+
+            //Borrar los comentarios, likes y reportes hechos por el usuario
+            $comments = Comment::where('user_id', $id)->get();
+            $likes = Like::where('user_id', $id)->get();
+            $reports = Report::where('user_id', $id)->get();
+
+                //Eliminar comentarios
+                if($comments && count($comments) >= 1){
+                    foreach($comments as $comment){
+                        $comment->delete();
+                    }
+                }
+                
+                //Eliminar likes
+                if($likes && count($likes) >= 1){
+                    foreach($likes as $like){
+                        $like->delete();
+                    }
+                }
+
+                //Eliminar reportes
+                if($reports && count($reports) >= 1){
+                    foreach($reports as $report){
+                        $report->delete();
+                    }
+                }
+
+            //Borrar comentarios y likes de las publicaciones del usuario
+            $images = Image::where('user_id', $id)->get();
+
+            foreach($images as $image){
+                //sacar el id de cada imagen del usuario
+                $id = $image->id;
+                $comments = Comment::where('image_id', $id)->get();
+                $likes = Like::where('image_id', $id)->get();
+                $reports = Report::where('image_id', $id)->get();
+    
+                    //Eliminar comentarios
+                    if($comments && count($comments) >= 1){
+                        foreach($comments as $comment){
+                            $comment->delete();
+                        }
+                    }
+                    
+                    //Eliminar likes
+                    if($likes && count($likes) >= 1){
+                        foreach($likes as $like){
+                            $like->delete();
+                        }
+                    }
+    
+                    //Eliminar reportes
+                    if($reports && count($reports) >= 1){
+                        foreach($reports as $report){
+                            $report->delete();
+                        }
+                    }
+
+                    //Eliminar publicaciones del usuario
+                    if($images && count($images) >= 1){
+                        foreach($images as $image){
+                            $image->delete();
+                            Storage::disk('images')->delete($image->image_path);
+                        }
+                    }
+            }
+
+            //Borrar usuario
+            $user->delete(); 
+            return redirect()->route('main');
+         }
+    }
+
     //devolver imagen
     public function getImage($filename){
         $file = Storage::disk('users')->get($filename);
@@ -98,22 +182,43 @@ class UserController extends Controller{
     public function profile($id){
         $user = User::find($id);
 
-        //Pasarle la variable $user al perfil
-        return view('user.profile', [
-            'user' => $user
-        ]);
+        if($user){
+            //Pasarle la variable $user al perfil
+            return view('user.profile', [
+                'user' => $user
+            ]);
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     //Actividad de la cuenta y notificaciones
     public function activity(){
         //conseguir el usuario identificado y que solo pueda acceder el
-        $id = \Auth::user()->id;
-        $user = User::find($id);
+        $user = \Auth::user();
 
-        //Pasarle la variable $user al perfil
-        return view('user.activity', [
-            'user' => $user
-        ]);
+        foreach($user->images as $image){
+            $image_id = $image->id;
+
+            $likes = Like::where('image_id', $image_id)->count();
+            $comments = Comment::where('image_id', $image_id)->count();
+
+            if($likes > 0 || $comments > 0){
+                //Pasarle la variable $user al perfil
+               return view('user.activity', [
+                   'user' => $user
+               ]);
+            }
+        }
         
+        if($likes > 0 || $comments > 0){
+             //Pasarle la variable $user al perfil
+            return view('user.activity', [
+                'user' => $user
+            ]);
+            
+        }else{
+            return view('user.no-activity');
+        }
     }
 }

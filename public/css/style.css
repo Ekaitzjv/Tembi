@@ -5,6 +5,13 @@
 }
 
 /*Top navbar*/
+/*WEB*/
+@media (max-width: 780px) {
+    .top-icon{
+        margin-left: 45%;
+    }
+}
+
 /*MOBILE*/
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .top-icon{
@@ -16,7 +23,7 @@
 .avatar{
     display: block;
     margin: auto;
-    width: 35;
+    width: 38;
     border-radius: 900px;
 }
 
@@ -54,10 +61,10 @@
     margin-right: 5px;
 }
 
-/*Top navbar*/
 .name-dropdown{
-    font-size: 16px;
+    font-size: 17px;
     margin-top: 3px;
+    margin-right: 0; 
 }
 
 .top-bell img{
@@ -67,12 +74,25 @@
 }
 
 .top-dropdown:hover{
-    background: rgb(224, 224, 224);
+    background: rgb(235, 235, 235);
 }
 
 .cerrar-sesion:hover {
     color: red;
     background: rgb(255, 223, 223);
+}
+
+.top-trendy a{
+    width: 30px;
+    height: auto;
+    margin-left: 10px;
+    padding-bottom: 10px;
+}
+
+.top-admin{
+    width: 30px;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 /*Página INFO*/
@@ -223,6 +243,10 @@
     color: rgb(184, 0, 0);
 }
 
+.dots .delete-publication:hover{
+    background: rgb(255, 207, 207);
+}
+
 /* Imagen de la publicación*/ 
 .image-container{
     height: auto;
@@ -240,10 +264,16 @@
 }
 
 /*Parte inferior publicación*/
-
 /*Ver imagen*/
 .view-image img{
     width: 25px;
+    margin-right: 10px; 
+    padding-top: 10px;
+    float: right;
+}
+
+.report-image img{
+    width: 22px;
     margin-right: 10px; 
     padding-top: 10px;
     float: right;
@@ -388,6 +418,24 @@
     color: rgb(100, 100, 100);
     margin-right: 10px; 
     padding-top: 10px;
+}
+
+/*Página editar usuario*/
+.delete-container{
+    margin-top: 20px;
+}
+
+.delete-account{
+    text-decoration: none;
+    padding: 5px;
+}
+
+.delete-account a{
+    color: red;
+}
+
+.delete-account p{
+    color: rgb(112, 112, 112);
 }
 
 /*Perfil del usuario*/
@@ -604,4 +652,306 @@
     color: rgb(122, 122, 122);
     padding: 2px;
     font-size: 22px;
+}
+
+/*Página de actividad y notificaciones*/
+.notification{
+    display: block;
+    margin-top: 10px;
+    margin-left: 25px;
+    padding: 10px;
+    width: 500px;
+    border-top: 1px solid rgb(204, 204, 204);
+}
+
+.notification-image img{
+    float: left;
+    width: 70px;
+    height: auto;
+    padding: 5px;
+}
+
+.notification-container{
+    display: block;
+    margin-left: 100px;
+}
+
+.activity-like{
+    width: 400px;
+}
+
+.activity-comment{
+    word-break: break-all;
+    width: 400px;
+}
+
+.no-activity{
+    margin-top: 30px;
+}
+
+.inform-activity{
+    margin-top: 20px;
+    font-size: 15px;
+    color: grey;
+}
+
+/*WEB*/
+@media (max-width: 780px) {
+    .notification{
+        margin-top: 5px;
+        margin-left: 0;
+        padding: 5px;
+        width: 400px;
+    }
+
+    .notification-image img{
+        width: 50px;
+        height: auto;
+    }
+    
+    .notification-container{
+        display: block;
+        margin-left: 80px;
+    }
+    
+    .activity-like{
+        width: 350px;
+    }
+    
+    .activity-comment{
+        word-break: break-all;
+        width: 350px;
+    }
+}
+
+/*MOBILE*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .notification{
+        margin-top: 5px;
+        margin-left: 0;
+        padding: 10px;
+        width: 350px;
+    }
+
+    .notification-image img{
+        width: 50px;
+        height: auto;
+    }
+    
+    .notification-container{
+        display: block;
+        margin-left: 60px;
+    }
+    
+    .activity-like{
+        width: 250px;
+    }
+    
+    .activity-comment{
+        word-break: break-all;
+        width: 250px;
+    }
+}
+
+/*Administrador*/
+/*Aside*/
+.botones-lateral{
+    margin-top: -16px;
+    width: 10%;
+}
+
+.botones-lateral a{
+    text-decoration: none;
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 15px;
+    padding-left: 25px;
+    color: red;
+    font-weight: bolder;
+    background-color: white;
+    box-shadow: 2px 2px rgb(223, 223, 223);
+    border-radius: 0 25px 25px 0;
+    transition-duration: 300ms;
+}
+
+.botones-lateral a:hover{
+    background: rgb(255, 132, 132);
+    box-shadow: 2px 2px rgb(255, 132, 132);
+    color: white;
+}
+
+.admin-content{
+    display: block;
+    margin: 30px;
+    margin-left: 12%;
+    width: 85%;
+    height: 400px;
+}
+
+.admin-dates table{
+    margin-left: 38%; 
+    margin-right: auto; 
+    width: 200px;
+}
+
+.admin-dates th{
+    padding: 10px;
+    padding-right: 30px;
+}
+
+.admin-dates td{
+    padding: 10px;
+}
+
+/*WEB*/
+@media (max-width: 780px) {
+    .botones-lateral{
+        margin-top: -16px;
+        width: 100px;
+    }
+    
+    .botones-lateral a{
+        text-decoration: none;
+        display: block;
+        float: left;
+        width: 100%;
+        padding: 15px;
+        padding-left: 25px;
+        color: red;
+        font-weight: bolder;
+        background-color: white;
+        box-shadow: 2px 2px rgb(223, 223, 223);
+        border-radius: 0 25px 25px 0;
+        transition-duration: 300ms;
+    }
+
+    .admin-content{
+        display: block;
+        margin: 30px;
+        margin-left: 110px;
+        width: 75%;
+        height: 600px;
+    }
+
+    .admin-dates table{
+        margin-left: auto; 
+        margin-right: auto; 
+        width: 200px;
+    }
+    
+    .admin-dates th{
+        padding: 10px;
+        padding-right: 30px;
+    }
+    
+    .admin-dates td{
+        padding: 10px;
+    }
+}
+
+/*MOBILE*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .botones-lateral{
+        margin-top: -16px;
+        width: 100px;
+    }
+    
+    .botones-lateral a{
+        text-decoration: none;
+        display: block;
+        float: left;
+        width: 100%;
+        padding: 15px;
+        padding-left: 25px;
+        color: red;
+        font-weight: bolder;
+        background-color: white;
+        box-shadow: 2px 2px rgb(223, 223, 223);
+        border-radius: 0 25px 25px 0;
+        transition-duration: 300ms;
+    }
+
+    .admin-content{
+        display: block;
+        margin: 15px;
+        margin-top: 200px;
+        width: 90%;
+        height: 390px;
+    }
+    
+    .admin-dates table{
+        margin-left: auto; 
+        margin-right: auto; 
+        width: 200px;
+    }
+    
+    .admin-dates th{
+        padding: 10px;
+        padding-right: 30px;
+    }
+    
+    .admin-dates td{
+        padding: 10px;
+    }
+}
+
+/*Página de reportes*/
+.report-container table{
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 70%;
+}
+
+.img-report img{
+    width: 100px;
+    height: auto;
+}
+
+.report-container th{
+    text-align: center;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    padding: 20px;
+}
+
+.report-container td{
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+.icons-report img{
+    width: 30px;
+    height: auto;
+}
+
+/*MOBILE*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .report-container table{
+        margin-left: auto; 
+        margin-right: auto; 
+        width: 70%;
+    }
+    
+    .img-report img{
+        width: 70px;
+        height: auto;
+    }
+    
+    .report-container th{
+        text-align: center;
+        border-bottom: 1px solid rgb(219, 219, 219);
+        padding:1px;
+    }
+    
+    .report-container td{
+        padding: 2px;
+        text-align: center;
+        border-bottom: 1px solid rgb(219, 219, 219);
+    }
+    
+    .icons-report img{
+        width: 25px;
+        height: auto;
+    }
 }
