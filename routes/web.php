@@ -61,6 +61,13 @@ Route::get('/help', 'HelpController@help')->name('help');
 Route::get('/privacy', 'HelpController@privacy')->name('privacy');
 Route::get('/cookies', 'HelpController@cookies')->name('cookies');
 
+//Administrador
+Route::get('/admin', 'UserController@admin')->name('admin');
+Route::get('/reports', 'UserController@reports')->name('reports');
+Route::get('/report/user/delete/{id}', 'UserController@ReportUserDelete')->name('ReportUserDelete');
+Route::get('/report/post/delete/{id}', 'UserController@ReportPostDelete')->name('ReportPostDelete');
+Route::get('/report/post/cancel/{id}', 'UserController@ReportCancel')->name('ReportCancel');
+
 //Usuario
 Route::get('/edit', 'UserController@edit')->name('edit');
 Route::post('/user/update', 'UserController@update')->name('user.update');
@@ -68,6 +75,7 @@ Route::get('/user/image/{filename}', 'UserController@getImage')->name('user.imag
 Route::get('/profile/{id}', 'UserController@profile')->name('profile');
 Route::get('/people/{search?}', 'UserController@index')->name('user.index');
 Route::get('/activity', 'UserController@activity')->name('activity');
+Route::get('/user/delete/{id}', 'UserController@delete')->name('user.delete');
 
 //Imagen
 Route::get('/create', 'ImageController@create')->name('image.create');
@@ -79,6 +87,7 @@ Route::get('/image/delete/{id}', 'ImageController@delete')->name('image.delete')
 Route::get('/image/edit/{id}', 'ImageController@edit')->name('image.edit');
 Route::post('/image/update', 'ImageController@update')->name('image.update');
 Route::get('/trendy', 'ImageController@trendy')->name('trendy');
+Route::get('/report/{image_id}', 'ImageController@report')->name('report');
 
 
 //Comentarios
