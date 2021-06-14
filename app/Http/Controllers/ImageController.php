@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\File;
 use App\Image;
 use App\Comment;
 use App\Like;
+use App\User;
+use App\Report;
 
 class ImageController extends Controller
 {
@@ -42,7 +44,6 @@ class ImageController extends Controller
         $image->description = $description;
         $image->all_likes = 0;
 
-
         //subir imagen
         if($image_path){
             $image_path_name = time().$image_path->getClientOriginalName();
@@ -66,18 +67,27 @@ class ImageController extends Controller
     public function view($id){
         $image = Image::find($id);
 
-        return view('image.view',[
-            'image' => $image
-        ]);
+        if($image){
+            return view('image.view',[
+                'image' => $image
+            ]);
+        }else{
+            return redirect()->route('home');
+        }
     }
     
     //Mostrar página individual de la imagen
     public function detail($id){
         $image = Image::find($id);
 
-        return view('image.detail',[
-            'image' => $image
-        ]);
+        if($image){
+            return view('image.detail',[
+                'image' => $image
+            ]);
+        }else{
+            return redirect()->route('home');
+        }
+        
     }
 
     //Eliminar imagen
@@ -99,12 +109,14 @@ class ImageController extends Controller
                     $comment->delete();
                 }
             }
+            
             //Eliminar likes
             if($likes && count($likes) >= 1){
                 foreach($likes as $like){
                     $like->delete();
                 }
             }
+
             //Eliminar ficheros de imagen guardados en el storage y en la ddbb
             Storage::disk('images')->delete($image->image_path);
             //Eliminar registro de la imagen
@@ -153,6 +165,20 @@ class ImageController extends Controller
 
         return redirect()->route('image.detail', ['id' => $image_id])
                         ->with(['message' => 'Image updated correctly']);
+    }
+
+    public function report($image_id){
+        $report = new Report();
+        $user = \Auth::user();
+
+        $report->user_id = $user->id;
+        $report->image_id = (int)$image_id;
+
+        //Guardar en la base de datos el reporte
+        $report->save();
+
+        return redirect()->route('image.detail', ['id' => $image_id])
+                        ->with(['message' => 'Image reported correctly']);
     }
 
     //Imagenes populares
