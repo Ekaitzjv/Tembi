@@ -135,5 +135,25 @@
             </div>
         </div>
     </div>
+    <script>
+    function deleteAccount() {
+        confirm("Do you want to delete your account?");
+    }
+    </script>
+    <div class="container delete-container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Delete profile</div>
+                    <div class="card-body">
+                        <div class="delete-account">
+                            <p>If you delete your account all your posts, likes and comments will be deleted</p>
+                            <a onclick="deleteAccount()" href="{{route('user.delete', ['id' => Auth::user()->id])}}">Delete account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 @endsection
