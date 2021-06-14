@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </form>
-            <h3>People</h3>
+            <h4>PEOPLE</h4>
             <hr>
             <!--Bucle de publicaciones-->
             @foreach($users as $user)
