@@ -18,6 +18,6 @@ class Report extends Model
     //Relación de muchas a uno
     //El reporte pertenece a 'image_id'
     public function image(){
-        return $this->belongsTo('App\image', 'image_id');
+        return $this->belongsTo('App\Image', 'image_id');
     }
 }

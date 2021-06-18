@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Like;
 use App\Image;
-use App\User;
 
 class LikeController extends Controller{
     public function __construct(){
