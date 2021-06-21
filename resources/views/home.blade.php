@@ -6,7 +6,6 @@
         <div class="col-md-8">
             <!--mensaje-->
             @include('includes.message')
-            
             <!--Bucle de publicaciones-->
              @each('includes.image', $images , 'image')
             <!--PAGINACIÓN-->

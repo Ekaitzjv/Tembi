@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Tembi') }}</title>
+    <title>{{ config('app.name', 'Tembi') }} | Discovering photography </title>
 
     <!-- Scripts -->
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
@@ -112,7 +112,7 @@
                             </li>
                             <li class="nav-item heart-icon">
                                 <a class="nav-link top-icon" href="{{ route('likes') }}">
-                                    <img src="{{asset('img/Main-heart.png')}}" />
+                                    <img src="{{asset('img/main-heart.png')}}" />
                                 </a>
                             </li>
                             <li class="nav-item add-icon">

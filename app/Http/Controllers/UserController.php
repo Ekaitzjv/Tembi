@@ -383,6 +383,9 @@ class UserController extends Controller{
         //conseguir el usuario identificado y que solo pueda acceder el
         $user = \Auth::user();
 
+        $likes = 0;
+        $comments = 0;
+
         foreach($user->images as $image){
             $image_id = $image->id;
 
