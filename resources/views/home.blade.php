@@ -7,11 +7,11 @@
             <!--mensaje-->
             @include('includes.message')
             <!--Bucle de publicaciones-->
-             @each('includes.image', $images , 'image')
+             @each('includes.image', $posts , 'post')
             <!--PAGINACIÓN-->
             <div class="clearfix"></div>
             <div class="row justify-content-center">
-                {{$images->links()}}
+                {{$posts->links()}}
             </div>
         </div>
     </div>

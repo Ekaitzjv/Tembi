@@ -45,12 +45,12 @@ class LikeController extends Controller{
             $like->post_id = (int)$post_id;
             
             //Sumar 1 like en la tabla images
-            $image = Post::find($post_id);
-            $image->all_likes = $image->all_likes + 1;
+            $post = Post::find($post_id);
+            $post->all_likes = $post->all_likes + 1;
             
             //Guardar en la base de datos el objeto
             $like->save();
-            $image->update();
+            $post->update();
 
             return response()->json([
                 'like' => $like
@@ -80,12 +80,12 @@ class LikeController extends Controller{
         if($like){
 
             //Restar 1 like en la tabla images
-            $image = Post::find($post_id);
-            $image->all_likes = $image->all_likes - 1;
+            $post = Post::find($post_id);
+            $post->all_likes = $post->all_likes - 1;
 
             //Eliminar like
             $like->delete();
-            $image->update();
+            $post->update();
 
             return response()->json([
                 'like' => $like,

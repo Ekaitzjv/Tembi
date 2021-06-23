@@ -8,7 +8,7 @@
     </div>
 
     <!--Bucle de notificaciones-->
-    @each('user.notification', $user->posts , 'image')
+    @each('user.notification', $user->posts , 'post')
 
 @else
 <div class="container">

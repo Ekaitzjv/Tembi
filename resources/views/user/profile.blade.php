@@ -35,7 +35,7 @@
             </div>
             @else
             <!--Bucle de publicaciones-->
-            @each('includes.image', $user->posts, 'image' )
+            @each('includes.image', $user->posts, 'post' )
             @endif
 
         </div>

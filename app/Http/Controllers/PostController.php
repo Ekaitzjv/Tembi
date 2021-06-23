@@ -39,19 +39,19 @@ class PostController extends Controller
 
         //asignar valores al nuevo objeto
         $user = \Auth::user();
-        $image = new Post();
-        $image->user_id = $user->id;
-        $image->description = $description;
-        $image->all_likes = 0;
+        $post = new Post();
+        $post->user_id = $user->id;
+        $post->description = $description;
+        $post->all_likes = 0;
 
         //subir imagen
         if($image_path){
             $image_path_name = time().$image_path->getClientOriginalName();
             Storage::disk('images')->put($image_path_name, File::get($image_path));
-            $image->image_path = $image_path_name;
+            $post->image_path = $image_path_name;
         }
 
-        $image->save();
+        $post->save();
     
         return redirect()->route('home')->with([
             'message' => 'The photo has been uploaded successfully'
@@ -66,11 +66,11 @@ class PostController extends Controller
 
     //Ver imagen
     public function view($id){
-        $image = Post::find($id);
+        $post = Post::find($id);
 
-        if($image){
+        if($post){
             return view('image.view',[
-                'image' => $image
+                'post' => $post
             ]);
         }else{
             return redirect()->route('home');
@@ -79,11 +79,11 @@ class PostController extends Controller
     
     //Mostrar página individual de la imagen
     public function detail($id){
-        $image = Post::find($id);
+        $post = Post::find($id);
 
-        if($image){
+        if($post){
             return view('image.detail',[
-                'image' => $image
+                'post' => $post
             ]);
         }else{
             return redirect()->route('home');
@@ -95,14 +95,14 @@ class PostController extends Controller
     public function delete($id){
         $user = \Auth::user();
         //sacar la imagen que necesito por id
-        $image = Post::find($id);
+        $post = Post::find($id);
         //sacar todos los comentarios de la imagen por el id
         $comments = Comment::where('post_id', $id)->get();
         //sacar todos los likes de la imagen por el id
         $likes = Like::where('post_id', $id)->get();
 
         //Comprobar que soy el dueño de la imagen
-        if($user && $image && $image->user->id == $user->id){
+        if($user && $post && $post->user->id == $user->id){
 
             //Eliminar comentarios
             if($comments && count($comments) >= 1){
@@ -119,9 +119,9 @@ class PostController extends Controller
             }
 
             //Eliminar ficheros de imagen guardados en el storage y en la ddbb
-            Storage::disk('images')->delete($image->image_path);
+            Storage::disk('images')->delete($post->image_path);
             //Eliminar registro de la imagen
-            $image->delete();
+            $post->delete();
 
             $message = array('message' => 'Image removed correctly');
 
@@ -134,11 +134,11 @@ class PostController extends Controller
     //Editar imagen
     public function edit($id){
         $user = \Auth::user();
-        $image = Post::find($id);
+        $post = Post::find($id);
 
-        if($user && $image && $image->user->id == $user->id){
+        if($user && $post && $post->user->id == $user->id){
             return view('image.edit', [
-                'image' => $image
+                'post' => $post
             ]);
         }else{
             return redirect()->route('home');
@@ -158,11 +158,11 @@ class PostController extends Controller
         $description = $request->input('description');
         
         //Conseguir objeto image
-        $image = Post::find($post_id);
-        $image->description = $description;
+        $post = Post::find($post_id);
+        $post->description = $description;
 
         //Actualizar registro
-        $image->update();
+        $post->update();
 
         return redirect()->route('image.detail', ['id' => $post_id])
                         ->with(['message' => 'Image updated correctly']);
@@ -186,16 +186,15 @@ class PostController extends Controller
     public function trendy(){
 
         $user = \Auth::user();
-        $images = new Like();
         
         //sacar las 10 imagenes con más likes 
-        $images = Post::where('all_likes', '>', 0)
+        $posts = Post::where('all_likes', '>', 0)
                         ->orderBy('all_likes', 'desc')
                         ->limit(10)
                         ->get();
     
         return view('image.trendy', [
-            'images' => $images
+            'posts' => $posts
         ]);
     }
 }

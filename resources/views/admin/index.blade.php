@@ -8,7 +8,7 @@
             <tbody>
                 <tr>
                     <th>Imagenes totales</th>
-                    <td>{{count($images)}}</td>
+                    <td>{{count($posts)}}</td>
                 </tr>
                 <tr>
                     <th>Usuarios totales</th>

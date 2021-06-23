@@ -8,46 +8,46 @@
             @include('includes.message')
             <div class="card pub_image">
                 <div class="card-header">
-                    @if(Auth::user() && Auth::user()->id == $image->user->id)
+                    @if(Auth::user() && Auth::user()->id == $post->user->id)
                     <!--3 puntos desplegables-->
                     <div class="nav-item dropdown dots">
                         <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown">
                             <img class="avatar" src="{{ asset('img/dots.png')}}" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{ route('image.edit', ['id' => $image->id])}}">
+                            <a class="dropdown-item" href="{{ route('image.edit', ['id' => $post->id])}}">
                                 Edit
                             </a>
                             <a class="dropdown-item delete-publication"
-                                href="{{ route('image.delete', ['id' => $image->id]) }}">
+                                href="{{ route('image.delete', ['id' => $post->id]) }}">
                                 Delete
                             </a>
                         </div>
                     </div>
                     @endif
                     <!--Imagen avatar-->
-                    @if($image->user->image)
+                    @if($post->user->image)
                     <div class="container-avatar avatar-main">
-                        <a href=" {{ route('profile', ['id' => $image->user->id])}}">
-                            <img src="{{ route('user.image',['filename'=>$image->user->image]) }}" />
+                        <a href=" {{ route('profile', ['id' => $post->user->id])}}">
+                            <img src="{{ route('user.image',['filename'=>$post->user->image]) }}" />
                         </a>
                     </div>
                     @else
                     <div class="container-avatar avatar-main">
-                        <a href=" {{ route('profile', ['id' => $image->user->id])}}">
+                        <a href=" {{ route('profile', ['id' => $post->user->id])}}">
                             <img class="avatar" src="{{ asset('img/default-avatar.jpg')}}" />
                         </a>
                     </div>
                     @endif
                     <div class="data-username">
                         <!--Nombre de usuario-->
-                        <a href="{{ route('profile', ['id' => $image->user->id])}}">{{$image->user->username}}</a>
+                        <a href="{{ route('profile', ['id' => $post->user->id])}}">{{$post->user->username}}</a>
                     </div>
                 </div>
                 <!--Imagen(publicación)-->
                 <div class="card-body">
                     <div class="image-container">
-                        <img src="{{ route('image.file',['filename' => $image->image_path]) }}" />
+                        <img src="{{ route('image.file',['filename' => $post->image_path]) }}" />
                     </div>
                     <script>
                     function report() {
@@ -55,44 +55,44 @@
                     }
                     </script>
                     <!--BOTONES INFERIORES-->
-                    @if (Auth::user()->id != $image->user_id)
+                    @if (Auth::user()->id != $post->user_id)
                     <div class="report-image">
-                        <a onclick="report()" href="{{route('report', ['image_id' => $image->id]) }}">
+                        <a onclick="report()" href="{{route('report', ['post_id' => $post->id]) }}">
                             <img src="{{asset('img/report.png')}}" />
                         </a>
                     </div>
                     @endif
                     <!--created at(fecha)-->
                     <div class="created_at-main">
-                        <span>{{\FormatTime::LongTimeFilter($image->created_at)}}</span>
+                        <span>{{\FormatTime::LongTimeFilter($post->created_at)}}</span>
                     </div>
                     <!--likes-->
                     <div class="likes">
                         <!--Comprobar si el usuario le dió like a la imagen-->
                         <?php $user_like = false; ?>
-                        @foreach($image->likes as $like)
+                        @foreach($post->likes as $like)
                         @if($like->user->id == Auth::user()->id )
                         <?php $user_like = true; ?>
                         @endif
                         @endforeach
 
                         @if($user_like)
-                        <img src="{{asset('img/like_red.png')}}" data-id="{{$image->id}}" class="btn-like" />
+                        <img src="{{asset('img/like_red.png')}}" data-id="{{$post->id}}" class="btn-like" />
                         @else
-                        <img src="{{asset('img/like_empty.png')}}" data-id="{{$image->id}}" class="btn-dislike" />
+                        <img src="{{asset('img/like_empty.png')}}" data-id="{{$post->id}}" class="btn-dislike" />
                         @endif
                         <span class="count_quantity">
-                            @if(count($image->likes) != 0)
-                            {{count($image->likes)}}
+                            @if(count($post->likes) != 0)
+                            {{count($post->likes)}}
                             @endif
                         </span>
                     </div>
                     <!--comments-->
                     <div class="comments-detail">
                         <p>
-                            @if(count($image->comments) > 0)
-                            {{count($image->comments)}}
-                            @if(count($image->comments) == 1)
+                            @if(count($post->comments) > 0)
+                            {{count($post->comments)}}
+                            @if(count($post->comments) == 1)
                             comment
                             @else
                             comments
@@ -103,10 +103,10 @@
                         </p>
                     </div>
                     <!--descripción-->
-                    @if(!empty($image->description))
+                    @if(!empty($post->description))
                     <div class="description-box">
-                        <span class="description-username">{{$image->user->username}}</span>
-                        <p class="description">{{$image->description}}</p>
+                        <span class="description-username">{{$post->user->username}}</span>
+                        <p class="description">{{$post->description}}</p>
                     </div>
                     @endif
                     <!--Formulario de comentarios-->
@@ -114,7 +114,7 @@
                         <form method="POST" action="{{ route('comment.save') }}">
                             @csrf
                             <button type="submit" class="btn btn-post-comment">Post</button>
-                            <input type="hidden" name="post_id" value="{{$image->id}}" />
+                            <input type="hidden" name="post_id" value="{{$post->id}}" />
                             <p>
                                 <textarea class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}"
                                     name="content"></textarea>
@@ -127,8 +127,8 @@
                         </form>
                     </div>
 
-                    @foreach($image->comments as $comment)
-                    @if(!empty($image->comments))
+                    @foreach($post->comments as $comment)
+                    @if(!empty($post->comments))
                     <div class="comments">
                         <span class="username">{{$comment->user->username}}</span>
                         <span class="comment-content">{{$comment->content}}</span>

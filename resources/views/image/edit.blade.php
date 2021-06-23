@@ -11,14 +11,14 @@
                     <form method="POST" action="{{ route('image.update') }}" enctype="multipart/form-data">
                         @csrf
 
-                        <input type="hidden" name="post_id" value="{{$image->id}}" />
+                        <input type="hidden" name="post_id" value="{{$post->id}}" />
 
                         <div class="form-group row">
                             <label for="image_path" class="col-md-3 col-form-label text-md-right">Image</label>
                             <div class="col-md-7">
                                 @if($image->image_path)
                                 <div class="edit-image">
-                                    <img src="{{ route('image.file',['filename' => $image->image_path]) }}"/>
+                                    <img src="{{ route('image.file',['filename' => $post->image_path]) }}"/>
                                 </div>
                                 @endif
                             </div>

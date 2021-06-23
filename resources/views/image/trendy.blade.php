@@ -9,7 +9,7 @@
             </div>
             <hr>
             <!--Bucle de publicaciones-->
-            @each('image.popular_post', $images , 'image')
+            @each('image.popular_post', $posts , 'post')
         </div>
     </div>
 </div>

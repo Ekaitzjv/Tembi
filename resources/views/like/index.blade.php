@@ -18,7 +18,7 @@
                 <!--Bucle de publicaciones-->
                     @foreach($likes as $like)
                         <!--Listar solo las imagenes con LIKE-->
-                        @include('includes.image',['image'=>$like->post])
+                        @include('includes.image',['post'=>$like->post])
                     @endforeach
 
             <!--PAGINACIÓN-->
