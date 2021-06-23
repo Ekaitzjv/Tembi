@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Like;
-use App\Image;
+use App\Post;
 use App\User;
 
 class LikeController extends Controller{
@@ -25,7 +25,7 @@ class LikeController extends Controller{
     }
 
     //Guardar un like
-    public function like($image_id){
+    public function like($post_id){
         //Recoger datos del usuario y de la imagen
         $user = \Auth::user();
 
@@ -33,7 +33,7 @@ class LikeController extends Controller{
                                 //user_id es igual a $user->id
         $isset_like = Like::where('user_id', $user->id)
                                 //image_id es igual a $image_id
-                            ->where('image_id', $image_id)
+                            ->where('post_id', $post_id)
         //contar los likes totales en una publicacion heachos por el usuario logueado
                             ->count();
 
@@ -42,10 +42,10 @@ class LikeController extends Controller{
             $like = new Like();
 
             $like->user_id = $user->id;
-            $like->image_id = (int)$image_id;
+            $like->post_id = (int)$post_id;
             
             //Sumar 1 like en la tabla images
-            $image = Image::find($image_id);
+            $image = Post::find($post_id);
             $image->all_likes = $image->all_likes + 1;
             
             //Guardar en la base de datos el objeto
@@ -64,7 +64,7 @@ class LikeController extends Controller{
     }
 
     //Borrar un like
-    public function dislike($image_id){
+    public function dislike($post_id){
     //Recoger datos del usuario y de la imagen
     $user = \Auth::user();
 
@@ -72,7 +72,7 @@ class LikeController extends Controller{
                              //user_id es igual a $user->id
     $like = Like::where('user_id', $user->id)
                              //image_id es igual a $image_id
-                        ->where('image_id', $image_id)
+                        ->where('post_id', $post_id)
                         //
                         ->first();
 
@@ -80,7 +80,7 @@ class LikeController extends Controller{
         if($like){
 
             //Restar 1 like en la tabla images
-            $image = Image::find($image_id);
+            $image = Post::find($post_id);
             $image->all_likes = $image->all_likes - 1;
 
             //Eliminar like

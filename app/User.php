@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     //Relación One To Many / de uno a muchos
     //un usuario puede tener muchas imagenes
-    public function images(){
-        return $this->hasMany('App\Image')->orderBy('id', 'desc');
+    public function posts(){
+        return $this->hasMany('App\Post')->orderBy('id', 'desc');
     }
 }

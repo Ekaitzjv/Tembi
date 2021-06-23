@@ -27,7 +27,7 @@
                 <hr>
             </div>
 
-            @if(count($user->images) == 0)
+            @if(count($user->posts) == 0)
             <div class="profile-empty">
                 <center>
                     <h3>No Posts Yet</h3>
@@ -35,7 +35,7 @@
             </div>
             @else
             <!--Bucle de publicaciones-->
-            @each('includes.image', $user->images , 'image' )
+            @each('includes.image', $user->posts, 'image' )
             @endif
 
         </div>

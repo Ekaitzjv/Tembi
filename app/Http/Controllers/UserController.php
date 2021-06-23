@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\User;
-use App\Image;
+use App\Post;
 use App\Like;
 use App\Comment;
 use App\Report;
@@ -42,7 +42,7 @@ class UserController extends Controller{
         $user = \Auth::user();
 
         //sacar todas las imagenes
-        $images = Image::get();
+        $images = Post::get();
         //sacar todos los usuarios
         $users = User::get();
         //sacar todos los usuarios
@@ -115,14 +115,14 @@ class UserController extends Controller{
                 
                 //Borrar comentarios y likes de las publicaciones del usuario
                 $id = $user->id;
-                $images = Image::where('user_id', $id)->get();
+                $images = Post::where('user_id', $id)->get();
 
                 foreach($images as $image){
                     //sacar el id de cada imagen del usuario
                     $id = $image->id;
-                    $comments = Comment::where('image_id', $id)->get();
-                    $likes = Like::where('image_id', $id)->get();
-                    $reports = Report::where('image_id', $id)->get();
+                    $comments = Comment::where('post_id', $id)->get();
+                    $likes = Like::where('post_id', $id)->get();
+                    $reports = Report::where('post_id', $id)->get();
 
                         //Eliminar comentarios
                         if($comments && count($comments) >= 1){
@@ -164,13 +164,13 @@ class UserController extends Controller{
     public function ReportPostDelete($id){
         $user = \Auth::user();
         //sacar la imagen que necesito por id
-        $image = Image::find($id);
+        $image = Post::find($id);
         //sacar todos los comentarios de la imagen por el id
-        $comments = Comment::where('image_id', $id)->get();
+        $comments = Comment::where('post_id', $id)->get();
         //sacar todos los likes de la imagen por el id
-        $likes = Like::where('image_id', $id)->get();
+        $likes = Like::where('post_id', $id)->get();
         //sacar todos los reportes de la imagen por el id
-        $reports = Report::where('image_id', $id)->get();
+        $reports = Report::where('post_id', $id)->get();
 
         //Comprobar que soy el admin
         if($user && $image && $user->role == '1234'){
@@ -313,14 +313,14 @@ class UserController extends Controller{
                 }
 
             //Borrar comentarios y likes de las publicaciones del usuario
-            $images = Image::where('user_id', $id)->get();
+            $images = Post::where('user_id', $id)->get();
 
             foreach($images as $image){
                 //sacar el id de cada imagen del usuario
                 $id = $image->id;
-                $comments = Comment::where('image_id', $id)->get();
-                $likes = Like::where('image_id', $id)->get();
-                $reports = Report::where('image_id', $id)->get();
+                $comments = Comment::where('post_id', $id)->get();
+                $likes = Like::where('post_id', $id)->get();
+                $reports = Report::where('post_id', $id)->get();
     
                     //Eliminar comentarios
                     if($comments && count($comments) >= 1){
@@ -386,11 +386,11 @@ class UserController extends Controller{
         $likes = 0;
         $comments = 0;
 
-        foreach($user->images as $image){
-            $image_id = $image->id;
+        foreach($user->posts as $image){
+            $post_id = $image->id;
 
-            $likes = Like::where('image_id', $image_id)->count();
-            $comments = Comment::where('image_id', $image_id)->count();
+            $likes = Like::where('post_id', $post_id)->count();
+            $comments = Comment::where('post_id', $post_id)->count();
 
             if($likes > 0 || $comments > 0){
                 //Pasarle la variable $user al perfil

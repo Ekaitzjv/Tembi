@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-use App\Image;
+use App\Post;
 use App\Comment;
 use App\Like;
 use App\User;
 use App\Report;
 
-class ImageController extends Controller
+class PostController extends Controller
 {
     //solo los usuarios logueados
     public function __construct(){
@@ -39,7 +39,7 @@ class ImageController extends Controller
 
         //asignar valores al nuevo objeto
         $user = \Auth::user();
-        $image = new Image();
+        $image = new Post();
         $image->user_id = $user->id;
         $image->description = $description;
         $image->all_likes = 0;
@@ -52,6 +52,7 @@ class ImageController extends Controller
         }
 
         $image->save();
+    
         return redirect()->route('home')->with([
             'message' => 'The photo has been uploaded successfully'
         ]);
@@ -65,7 +66,7 @@ class ImageController extends Controller
 
     //Ver imagen
     public function view($id){
-        $image = Image::find($id);
+        $image = Post::find($id);
 
         if($image){
             return view('image.view',[
@@ -78,7 +79,7 @@ class ImageController extends Controller
     
     //Mostrar página individual de la imagen
     public function detail($id){
-        $image = Image::find($id);
+        $image = Post::find($id);
 
         if($image){
             return view('image.detail',[
@@ -94,11 +95,11 @@ class ImageController extends Controller
     public function delete($id){
         $user = \Auth::user();
         //sacar la imagen que necesito por id
-        $image = Image::find($id);
+        $image = Post::find($id);
         //sacar todos los comentarios de la imagen por el id
-        $comments = Comment::where('image_id', $id)->get();
+        $comments = Comment::where('post_id', $id)->get();
         //sacar todos los likes de la imagen por el id
-        $likes = Like::where('image_id', $id)->get();
+        $likes = Like::where('post_id', $id)->get();
 
         //Comprobar que soy el dueño de la imagen
         if($user && $image && $image->user->id == $user->id){
@@ -133,7 +134,7 @@ class ImageController extends Controller
     //Editar imagen
     public function edit($id){
         $user = \Auth::user();
-        $image = Image::find($id);
+        $image = Post::find($id);
 
         if($user && $image && $image->user->id == $user->id){
             return view('image.edit', [
@@ -153,31 +154,31 @@ class ImageController extends Controller
         ]);
 
         //Recoger datos
-        $image_id = $request->input('image_id');
+        $post_id = $request->input('post_id');
         $description = $request->input('description');
         
         //Conseguir objeto image
-        $image = Image::find($image_id);
+        $image = Post::find($post_id);
         $image->description = $description;
 
         //Actualizar registro
         $image->update();
 
-        return redirect()->route('image.detail', ['id' => $image_id])
+        return redirect()->route('image.detail', ['id' => $post_id])
                         ->with(['message' => 'Image updated correctly']);
     }
 
-    public function report($image_id){
+    public function report($post_id){
         $report = new Report();
         $user = \Auth::user();
 
         $report->user_id = $user->id;
-        $report->image_id = (int)$image_id;
+        $report->post_id = (int)$post_id;
 
         //Guardar en la base de datos el reporte
         $report->save();
 
-        return redirect()->route('image.detail', ['id' => $image_id])
+        return redirect()->route('image.detail', ['id' => $post_id])
                         ->with(['message' => 'Image reported correctly']);
     }
 
@@ -188,7 +189,7 @@ class ImageController extends Controller
         $images = new Like();
         
         //sacar las 10 imagenes con más likes 
-        $images = Image::where('all_likes', '>', 0)
+        $images = Post::where('all_likes', '>', 0)
                         ->orderBy('all_likes', 'desc')
                         ->limit(10)
                         ->get();

@@ -15,9 +15,9 @@ class Comment extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
-    public function image(){
+    public function post(){
         //El comentario pertenece a esta 'image_id'
-        return $this->belongsTo('App\image', 'image_id');
+        return $this->belongsTo('App\Post', 'post_id');
     }
 }
 

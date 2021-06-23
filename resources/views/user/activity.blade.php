@@ -2,13 +2,13 @@
 
 @section('content')
 
-@if (count($user->images) > 0)
+@if (count($user->posts) > 0)
     <div class="text-center">
         <span class="h4">ACTIVITY</span>
     </div>
 
     <!--Bucle de notificaciones-->
-    @each('user.notification', $user->images , 'image')
+    @each('user.notification', $user->posts , 'image')
 
 @else
 <div class="container">

@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Post extends Model
 {
     //indicarle la tabla
-    protected $table = 'images';
+    protected $table = 'posts';
 
     //Relación de muchos a uno / un usuario puede crear muchas publicaciones
     //La imagen pertenece a 'user_id'

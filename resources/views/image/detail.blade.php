@@ -114,7 +114,7 @@
                         <form method="POST" action="{{ route('comment.save') }}">
                             @csrf
                             <button type="submit" class="btn btn-post-comment">Post</button>
-                            <input type="hidden" name="image_id" value="{{$image->id}}" />
+                            <input type="hidden" name="post_id" value="{{$image->id}}" />
                             <p>
                                 <textarea class="form-control {{ $errors->has('content') ? 'is-invalid' : '' }}"
                                     name="content"></textarea>
@@ -134,7 +134,7 @@
                         <span class="comment-content">{{$comment->content}}</span>
                         <span class="time-comments">{{\FormatTime::LongTimeFilter($comment->created_at)}}</span>
                         <!--Comprobar que es el usuario del comentario o de la foto-->
-                        @if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id ==
+                        @if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->post->user_id ==
                         Auth::user()->id))
                         <a class="delete-comment" href="{{route('comment.delete', ['id' => $comment->id]) }}">delete</a>
                         @endif

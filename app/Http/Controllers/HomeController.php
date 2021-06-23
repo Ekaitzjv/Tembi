@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Image;
+use App\Post;
 use App\Comment;
 use App\Like;
 use App\User;
@@ -29,7 +29,7 @@ class HomeController extends Controller
     
     public function index(){
         //sacar todas las imagenes
-        $images = Image::orderBy('id', 'desc')->paginate(15);
+        $images = Post::orderBy('id', 'desc')->paginate(15);
         return view('home', [
             'images' => $images
             ]);

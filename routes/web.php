@@ -78,16 +78,16 @@ Route::get('/activity', 'UserController@activity')->name('activity');
 Route::get('/user/delete/{id}', 'UserController@delete')->name('user.delete');
 
 //Imagen
-Route::get('/create', 'ImageController@create')->name('image.create');
-Route::post('/image/save', 'ImageController@save')->name('image.save');
-Route::get('/image/file/{filename}', 'ImageController@getImage')->name('image.file');
-Route::get('/image/{id}', 'ImageController@detail')->name('image.detail');
-Route::get('/view/{id}', 'ImageController@view')->name('image.view');
-Route::get('/image/delete/{id}', 'ImageController@delete')->name('image.delete');
-Route::get('/image/edit/{id}', 'ImageController@edit')->name('image.edit');
-Route::post('/image/update', 'ImageController@update')->name('image.update');
-Route::get('/trendy', 'ImageController@trendy')->name('trendy');
-Route::get('/report/{image_id}', 'ImageController@report')->name('report');
+Route::get('/create', 'PostController@create')->name('image.create');
+Route::post('/image/save', 'PostController@save')->name('image.save');
+Route::get('/image/file/{filename}', 'PostController@getImage')->name('image.file');
+Route::get('/image/{id}', 'PostController@detail')->name('image.detail');
+Route::get('/view/{id}', 'PostController@view')->name('image.view');
+Route::get('/image/delete/{id}', 'PostController@delete')->name('image.delete');
+Route::get('/image/edit/{id}', 'PostController@edit')->name('image.edit');
+Route::post('/image/update', 'PostController@update')->name('image.update');
+Route::get('/trendy', 'PostController@trendy')->name('trendy');
+Route::get('/report/{post_id}', 'PostController@report')->name('report');
 
 
 //Comentarios
@@ -95,6 +95,6 @@ Route::post('/comment/save', 'CommentController@save')->name('comment.save');
 Route::get('/comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
 
 //Likes
-Route::get('/like/{image_id}', 'LikeController@like')->name('like.like');
-Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.dislike');
+Route::get('/like/{post_id}', 'LikeController@like')->name('like.like');
+Route::get('/dislike/{post_id}', 'LikeController@dislike')->name('like.dislike');
 Route::get('/likes', 'LikeController@index')->name('likes');
