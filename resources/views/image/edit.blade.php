@@ -16,7 +16,7 @@
                         <div class="form-group row">
                             <label for="image_path" class="col-md-3 col-form-label text-md-right">Image</label>
                             <div class="col-md-7">
-                                @if($image->image_path)
+                                @if($post->image_path)
                                 <div class="edit-image">
                                     <img src="{{ route('image.file',['filename' => $post->image_path]) }}"/>
                                 </div>
@@ -29,7 +29,7 @@
                             <div class="col-md-7">
                                 <textarea id="description" name="description"
                                     class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}"
-                                    >{{$image->description}}</textarea>
+                                    >{{$post->description}}</textarea>
 
                                 @if($errors->has('description'))
                                 <span class="invalid-feedback" role="alert">
