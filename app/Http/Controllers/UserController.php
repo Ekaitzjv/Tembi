@@ -385,8 +385,8 @@ class UserController extends Controller{
         $likes = 0;
         $comments = 0;
 
-        foreach($user->posts as $image){
-            $post_id = $image->id;
+        foreach($user->posts as $post){
+            $post_id = $post->id;
 
             $likes = Like::where('post_id', $post_id)->count();
             $comments = Comment::where('post_id', $post_id)->count();
