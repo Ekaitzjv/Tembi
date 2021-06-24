@@ -31,7 +31,7 @@ class PostController extends Controller
         //Validación
         $validate = $this->validate($request, [
             'description' => 'max:255',
-            'image_path' => 'image|mimes:jpeg,png,jpg|required|max:20480'
+            'image_path' => 'mimes:jpeg,png,jpg|required|image|max:10240'
         ]);
 
         //recojer los datos
