@@ -11,6 +11,7 @@ use App\Comment;
 use App\Like;
 use App\User;
 use App\Report;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -30,7 +31,7 @@ class PostController extends Controller
         //Validación
         $validate = $this->validate($request, [
             'description' => 'max:255',
-            'image_path' => 'mimes:jpeg,png,jpg|required|image|max:10240'
+            'image_path' => 'image|mimes:jpeg,png,jpg|required|max:20480'
         ]);
 
         //recojer los datos
@@ -46,18 +47,30 @@ class PostController extends Controller
 
         //subir imagen
         if($image_path){
+
+            //Ponerle nombre al archivo a guardar
             $image_path_name = time().$image_path->getClientOriginalName();
-            Storage::disk('images')->put($image_path_name, File::get($image_path));
+            //Ruta dee guardado del archivo
+            $route = storage_path() . '\app\images/' . $image_path_name;
+            //Modificaciones de la imagen con intervention
+            Image::make($image_path)->resize(1920, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->orientate()->save($route);
+
+            //Manera correcta de guardado de la imagen en caso de no hacer modificaciones
+            /*Storage::disk('images')->put($image_path_name, File::get($image_path));*/
+
             $post->image_path = $image_path_name;
         }
 
         $post->save();
-    
+
         return redirect()->route('home')->with([
             'message' => 'The photo has been uploaded successfully'
         ]);
     }
-
+    
     //Coger las imagenes para mostrarlas
     public function getImage($filename){
         $file = Storage::disk('images')->get($filename);
