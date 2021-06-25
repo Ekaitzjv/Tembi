@@ -50,16 +50,16 @@ class PostController extends Controller
 
             //Ponerle nombre al archivo a guardar
             $image_path_name = time().$image_path->getClientOriginalName();
-            //Ruta dee guardado del archivo
-            $route = storage_path() . '\app\images/' . $image_path_name;
-            //Modificaciones de la imagen con intervention
-            Image::make($image_path)->resize(1920, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })->orientate()->save($route);
+            /* //Guardar imagen sin comprimir
+            Storage::disk('images')->put($image_path_name, $image_path); */
 
-            //Manera correcta de guardado de la imagen en caso de no hacer modificaciones
-            /*Storage::disk('images')->put($image_path_name, File::get($image_path));*/
+            //Modificaciones de la imagen con intervention
+            $img = Image::make($image_path)->resize(1920, null, function ($constraint){
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                    })->orientate();
+            
+            Storage::disk('images')->put($image_path_name, (string) $img->encode());
 
             $post->image_path = $image_path_name;
         }
@@ -70,7 +70,7 @@ class PostController extends Controller
             'message' => 'The photo has been uploaded successfully'
         ]);
     }
-    
+
     //Coger las imagenes para mostrarlas
     public function getImage($filename){
         $file = Storage::disk('images')->get($filename);
