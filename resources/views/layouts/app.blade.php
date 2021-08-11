@@ -27,9 +27,15 @@
     <!--Anti copy-->
     <body ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
 
-    <!--Scroll bar-->
-    
-    
+    <!--Google analytics-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-15VV2SGHQ4"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-15VV2SGHQ4');
+    </script>    
     
 </head>
 
