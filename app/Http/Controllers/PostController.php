@@ -113,6 +113,8 @@ class PostController extends Controller
         $comments = Comment::where('post_id', $id)->get();
         //sacar todos los likes de la imagen por el id
         $likes = Like::where('post_id', $id)->get();
+        //sacar todos los reportes de la imagen por el id
+        $reports = Report::where('post_id', $id)->get();
 
         //Comprobar que soy el dueño de la imagen
         if($user && $post && $post->user->id == $user->id){
@@ -128,6 +130,13 @@ class PostController extends Controller
             if($likes && count($likes) >= 1){
                 foreach($likes as $like){
                     $like->delete();
+                }
+            }
+
+            //Eliminar reportes
+            if($reports && count($reports) >= 1){
+                foreach($reports as $report){
+                    $report->delete();
                 }
             }
 
